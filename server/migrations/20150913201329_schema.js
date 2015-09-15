@@ -26,6 +26,8 @@ exports.up = function(knex, Promise) {
       table.increments('projects_id').primary();
       table.string('project_name');
       table.integer('est_time');
+      table.string('creation_time');
+      table.string('completion_time');
       table.string('skill1');
       table.string('skill2');
       table.string('skill3');
