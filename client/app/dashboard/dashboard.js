@@ -20,7 +20,7 @@
     // for time assign pop up window, watch select project drop down
     // and set the project and skills as the selected one, so user can assign time to different skills for the peoject
     $scope.$watch("selectPro", function () {
-      for (var i = 0; i < $scope.projects.length; i ++) {
+      for (var i = 0; i < $scope.projects.length||0; i ++) {
         if ($scope.projects[i].project_name === $scope.selectPro) {
             $scope.timeAssignPro = $scope.projects[i]; 
         }
