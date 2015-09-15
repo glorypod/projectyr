@@ -101,6 +101,10 @@
         })
     }
 
+    $scope.setProject = function(project){
+      $scope.project = project
+    }
+
   };
 
 })();

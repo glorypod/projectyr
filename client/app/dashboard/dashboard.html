@@ -125,8 +125,27 @@
         <td>{{project.act_time.toFixed(2) + " hrs"}}</td>
         <td ng-repeat="skill in skills">{{(project[skill] || project[skill] === 0) ? project[skill] + " hrs": "N/A" }}</td>
         <!-- complete button for each project -->
-        <td><button class="btn btn-success" ng-click="completeProject(project)">Complete</button></td>
+        <td><button class="btn btn-success" data-toggle="modal" data-target="#submitCheck" ng-click="setProject(project)">Complete</button></td>
       </tr>
     </tbody>
   </table>
 </div>
+      
+          <div id="submitCheck" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Submit Check</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure "{{project.project_name}}" is complete?
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="completeProject(project)">Yes</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                </div>
+              </div>
+            </div>
+          </div>
