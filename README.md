@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/glorypod/projectyr.png?label=ready&title=Ready)](https://waffle.io/glorypod/projectyr)
 ## projecTYR ##
   > A project management and skill tracking tool for contractors and free-lance programmers.
 
