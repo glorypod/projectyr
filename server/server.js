@@ -86,42 +86,42 @@ app.post('/projects/create', function(req, res, next) {
   var username = jwt.decode(req.headers['x-access-token'], 'jmoney');
   var project = req.body;
   //this is old code - you can refactor in a similar style to lines 107-111 to avoid callback hell
-  // Users.findUserId(username)
-  //   .then(function(userId) {
-  //     Projects.duplicateProject(userId, project)
-  //       .then(function(exist) {
-  //         if (exist) {
-  //           next(new Error('Project exists!'));
-  //         } else {
-  //           Projects.insertProject(userId, project)
-  //             .then(function() {
-  //               console.log('Insert project success!')
-  //               Projects.hasInProgress(userId)
-  //                 .then(function(hasWIP) {
-  //                   res.json({hasWIP: hasWIP});
-  //                 });
-  //             });
-  //         }
-  //       }); 
-  //     });
   Users.findUserId(username)
     .then(function(userId) {
-      return Projects.duplicateProject(userId, project)
-    })
-    .then(function(exist) {
-      if (exist) {
-        next(new Error('Project exists!'));
-      } else {
-        Projects.insertProject(userId, project)
-          .then(function() {
-            console.log('Insert project success!')
-            Projects.hasInProgress(userId)
-              .then(function(hasWIP) {
-                res.json({hasWIP: hasWIP});
+      Projects.duplicateProject(userId, project)
+        .then(function(exist) {
+          if (exist) {
+            next(new Error('Project exists!'));
+          } else {
+            Projects.insertProject(userId, project)
+              .then(function() {
+                console.log('Insert project success!')
+                Projects.hasInProgress(userId)
+                  .then(function(hasWIP) {
+                    res.json({hasWIP: hasWIP});
+                  });
               });
-          });
-      }
-    }); 
+          }
+        }); 
+      });
+  // Users.findUserId(username)
+  //   .then(function(userId) {
+  //     return Projects.duplicateProject(userId, project)
+  //   })
+  //   .then(function(exist) {
+  //     if (exist) {
+  //       next(new Error('Project exists!'));
+  //     } else {
+  //       Projects.insertProject(userId, project)
+  //         .then(function() {
+  //           console.log('Insert project success!')
+  //           Projects.hasInProgress(userId)
+  //             .then(function(hasWIP) {
+  //               res.json({hasWIP: hasWIP});
+  //             });
+  //         });
+  //     }
+  //   }); 
 });
 
 /*  */
