@@ -70,13 +70,18 @@
       $scope.end = null;
     };
 
+    $scope.addTime = function(){
+      var timeToAdd = prompt("How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?");
+      $scope.actTime = Number(timeToAdd);
+      $scope.end = new Date();
+    };
+
     $scope.endClock = function () {
       $scope.end = new Date();
       $scope.actTime = (($scope.end - $scope.start)/(1000*60*60)/* + 3*/).toFixed(2);
         if($scope.actTime < .01){
           $scope.actTime= .01;
         }
-       // if($scope.actTime)
       $scope.start = null;
     };
 
