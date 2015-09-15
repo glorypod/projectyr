@@ -7,7 +7,7 @@
   function CreateController ($scope, $window, $location, Project, Auth) {
     // hard coded skills for user to choose right now.
     // enhancement can be done here to allow user create customized skills
-    $scope.skills = ["Javascript", "CSS", "HTML", "Ruby", "Other"];
+    $scope.skills = [ 'ASP','C', 'C#','C++', "CSS", "HTML",'Java', "Javascript","Matlab",".NET", 'Objective-C','Perl',"PHP",'Python','R', "Ruby",'SQL','XML', "Other"];
 
     $scope.project = {};
 
