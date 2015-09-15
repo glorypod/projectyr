@@ -39,6 +39,8 @@ var Projects = module.exports = {
         project_name: project.name, 
         est_time: project.estTime, 
         users_id: userId,
+        creation_time: new Date().toLocaleString(),
+        completion_time: '',
         skill1: project.skill1,
         skill2: project.skill2, 
         skill3: project.skill3})
@@ -53,7 +55,7 @@ var Projects = module.exports = {
 
   updateProject: function(project){
     return db('projects').where('projects_id', project.projects_id)
-      .update({done: true})
+      .update({done: true, completion_time: new Date().toLocaleString()})
       .then(function(){
         console.log(project.project_name + " update complete")
       });
