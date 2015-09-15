@@ -59,7 +59,7 @@
           // default the timeassign project as the first project for the user before user select a project in the time assign pop up window
           $scope.timeAssignPro = $scope.projects[0];
 
-          // reset satrt and end so the page show properly.
+           // reset satrt and end so the page show properly.
           $scope.start = null;
           $scope.end = null;
         });
@@ -72,7 +72,11 @@
 
     $scope.endClock = function () {
       $scope.end = new Date();
-      $scope.actTime = (($scope.end - $scope.start)/(1000*60*60) + 3).toFixed(2);
+      $scope.actTime = (($scope.end - $scope.start)/(1000*60*60)/* + 3*/).toFixed(2);
+        if($scope.actTime < .01){
+          $scope.actTime= .01;
+        }
+       // if($scope.actTime)
       $scope.start = null;
     };
 
