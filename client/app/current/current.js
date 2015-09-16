@@ -51,8 +51,7 @@
         elapsedMs = 0;
       }
     };
-    $scope.addTime = function(){
-      var timeToAdd = prompt("How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?");
+    $scope.addTime = function(timeToAdd){
       //$scope.actTime += Number(timeToAdd);
       totalElapsedMs += timeToAdd * 60 * 60 * 1000;
     };
