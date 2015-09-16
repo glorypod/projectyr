@@ -40,7 +40,7 @@ var Projects = module.exports = {
   },
 
   hasInProgress: function(userId) {
-    return this.getActiveProjects(userId)
+    return this.getOpenProjects(userId)
       .then(function(projects) {
         return projects.length > 0;
       })
