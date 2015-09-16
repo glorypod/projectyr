@@ -37,7 +37,7 @@
           Elapsed Time: {{ getElapsedMs()}} ms
         </div>
         <button id="start" class="btn btn-success" ng-click="start()">Start Clock</button>
-        <button ng-if="!running" id="assign" class="btn btn-success" ng-click="addTime()">Manually Add Time</button>
+        <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add Time</button>
         <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Clock</button>
         <button ng-if="running" id="stop" class="btn btn-danger" ng-click="stop()">Stop</button>
       </section>
@@ -58,4 +58,22 @@
   </div>
 </main>
 
+<!-- Modal: pop up window for assigning time to projects and skills -->
+<div id="manualTime" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Time</h4>
+      </div>
+      <div class="modal-body">
+        <p>How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?</p>
+        <input name="time" type="text" class="form-control" ng-model="manualTime" required/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addTime(manualTime)">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
 
