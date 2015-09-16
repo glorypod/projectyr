@@ -28,7 +28,7 @@
     })
 
     // init func set the look of the page
-    $scope.init = function () {
+    $scope.init = function ()  {
       Project.getOpen()
         .then(function(all) {
           var temp = all.projects;
