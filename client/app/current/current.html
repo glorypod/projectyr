@@ -16,152 +16,46 @@
     </div>
   </div>
 </nav>
-
-<!-- quick start timmer button -->
-<button type="button" class="btn btn-success btn-lg btn-block" ng-click="startClock()" ng-if="!start">Start Clock</button>
-<button type="button" class="btn btn-success btn-lg btn-block" ng-click="addTime()" ng-if="!start">Add Time Manually</button>
-
-<p ng-if="start" class="text-center">
-<button type="button" class="btn btn-primary btn-lg btn-block" time-tracker="start" ng-click="endClock()"></button>
-<br>
-(click to end)
-</p>
-
-<!-- assign time button -->
-<br>
-
-<p class="text-center"  ng-if="end">
-<button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">{{actTime + " hrs"}}</button>
-<br>
-(click to assign)
-</p>
-
-<!-- Modal: pop up window for assigning time to projects and skills -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Assign your time <mark>{{actTime + " hrs"}}</mark></h4>
-      </div>
-      <div class="modal-body">
-
-        <!-- select projects -->
-        <select class="form-control" ng-model="selectPro">
-          <option value="" disabled selected>Select your project</option>
-          <option ng-repeat="project in projects">{{project.project_name}}</option>
-        </select>
-
-        <!-- time assigning table content -->
-        <table class="table table-striped">
-          <!-- time assigning table header -->
-          <thead>
-            <tr>
-              <th>Project</th>
-              <th>Time</th>
-              <th>{{timeAssignPro.skill1}}</th>
-              <th>{{timeAssignPro.skill2}}</th>
-              <th>{{timeAssignPro.skill3}}</th>
-              <th>{{timeAssignPro.skill4}}</th>
-              <th>{{timeAssignPro.skill5}}</th>
-            </tr>
-          </thead>
-          <!-- time assigning project and its skills -->
-          <tbody>
-            <tr>
-              <td>{{timeAssignPro.project_name}}</td>
-              <td>{{actTime  + " hrs"}}</td>
-              <td ng-if="!!timeAssignPro.skill1">
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent1">
-                <div>
-                  {{ timeAssignPro.time1 = (actTime * (timeAssignPro.percent1 ? timeAssignPro.percent1 : 0) / 100).toFixed(2); 
-                  timeAssignPro.time1 + " hrs"}}
-                </div>
-              </td>
-              <td ng-if="!!timeAssignPro.skill2">
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent2">
-                <div>
-                  {{ timeAssignPro.time2 = ((actTime - timeAssignPro.time1) * (timeAssignPro.percent2 ? timeAssignPro.percent2 : 0) / 100).toFixed(2); 
-                  timeAssignPro.time2+ " hrs"}}
-                </div>
-              </td>  
-              <td ng-if="!!timeAssignPro.skill3">
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent3">
-                <div>
-                  {{ timeAssignPro.time3 = ((actTime - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent3 ? timeAssignPro.percent3 : 0)/ 100).toFixed(2); 
-                  timeAssignPro.time3  + " hrs"}}
-                </div>
-              </td>
-              <td ng-if="!!timeAssignPro.skill4">
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent4">
-                <div>
-                  {{ timeAssignPro.time4 = ((actTime - timeAssignPro.time3 - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent4 ? timeAssignPro.percent4 : 0)/ 100).toFixed(2); 
-                  timeAssignPro.time4  + " hrs"}}
-                </div>
-              </td>
-              <td ng-if="!!timeAssignPro.skill5">
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent5">
-                <div>
-                  {{ timeAssignPro.time5 = ((actTime - timeAssignPro.time4 - timeAssignPro.time3- timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent5 ? timeAssignPro.percent5 : 0)/ 100).toFixed(2); 
-                  timeAssignPro.time5  + " hrs"}}
-                </div>
-              </td>                                                
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- time Assign submmit -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="timeAssign()">Submit</button>
+<main class="container row">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="selectCurrent">
+        <form class="forms">
+          <div class="form-group">
+            <select ng-model="currentProject" ng-options="project.project_name for project in projects">
+                <option value="">Select a Project</option>
+            </select>
+          </div>
+        </form>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <section ng-show="currentProject" class="clock">
+        <div>
+          Elapsed Time: {{ getElapsedMs()}} ms
+        </div>
+        <button id="start" class="btn btn-success" ng-click="start()">Start Clock</button>
+        <button ng-if="!running" id="assign" class="btn btn-success" ng-click="addTime()">Manually Add Time</button>
+        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Clock</button>
+        <button ng-if="running" id="stop" class="btn btn-danger" ng-click="stop()">Stop</button>
+      </section>
+    </div>
+    <div class="col-md-6">
+      <div ng-show="currentProject">
+        <div>
+          Project Name: {{ currentProject.project_name }}
+        </div>
+        <div>
+          Time Estimate: {{ currentProject.est_time }}
+        </div>
+        <div>
+          Current Time: {{ currentProject.act_time }}
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>
 
-<!-- current display table -->
-<div class="container" data-ng-init="init()">
-  <table class="table table-striped">
-    <!-- current headers -->
-    <thead>
-      <tr>
-        <th>Project</th>
-        <th>Estimated Time</th>
-        <th>Actual Time</th>
-        <th ng-repeat="skill in skills">{{skill}}</th>
-        <th></th>
-      </tr>
-    </thead>
-    <!-- current projects -->
-    <tbody>
-      <tr ng-repeat="project in projects">
-        <td>{{project.project_name}}</td>
-        <td>{{project.est_time + " hrs"}}</td>
-        <td>{{project.act_time.toFixed(2) + " hrs"}}</td>
-        <td ng-repeat="skill in skills">{{(project[skill] || project[skill] === 0) ? project[skill] + " hrs": "N/A" }}</td>
-        <!-- complete button for each project -->
-        <td><button class="btn btn-success" data-toggle="modal" data-target="#submitCheck" ng-click="setProject(project)">Complete</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-      
-          <div id="submitCheck" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Submit Check</h4>
-                </div>
-                <div class="modal-body">
-                    Are you sure "{{project.project_name}}" is complete?
-                </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="completeProject(project)">Yes</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                </div>
-              </div>
-            </div>
-          </div>
