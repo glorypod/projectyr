@@ -31,6 +31,8 @@ exports.up = function(knex, Promise) {
       table.string('skill1');
       table.string('skill2');
       table.string('skill3');
+      table.string('skill4');
+      table.string('skill5');
       table.boolean('done');
       table.integer('users_id')
                   .references('users_id')

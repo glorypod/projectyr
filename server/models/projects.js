@@ -43,7 +43,9 @@ var Projects = module.exports = {
         completion_time: '',
         skill1: project.skill1,
         skill2: project.skill2, 
-        skill3: project.skill3})
+        skill3: project.skill3,
+        skill4: project.skill4,
+        skill5: project.skill5})
         .then(function() {
           var skills = Projects.getAllSkills(project);
           Skills.insertSkill(skills)
@@ -91,6 +93,12 @@ var Projects = module.exports = {
     };
     if (project.skill3 && skills.indexOf(project.skill3) === -1) {
       skills.push(project.skill3);
+    };
+    if (project.skill4 && skills.indexOf(project.skill4) === -1) {
+      skills.push(project.skill4);
+    };
+    if (project.skill5 && skills.indexOf(project.skill5) === -1) {
+      skills.push(project.skill5);
     };
     return skills;
   }
