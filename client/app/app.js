@@ -6,7 +6,7 @@
     'projectyr.create',
     'projectyr.current',
     'projectyr.open',
-   /* 'projectyr.closed',*/
+    'projectyr.closed',
     'ngRoute',
     'ui.router'
   ])
