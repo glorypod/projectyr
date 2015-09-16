@@ -41,12 +41,32 @@
 
         <!-- requiredskills -->
         <label>Required Skills: </label> <br>
-        <div class="options" ng-repeat='skillIndex in ["skill1", "skill2", "skill3","skill4","skill5"]'>
-          <select name="skill" ng-model="project[skillIndex]">
-            <option ng-repeat="option in skills"> {{option}}</option>
+        <div class="options">
+          <select name="skill" ng-model="project.skill1">
+                     <option ng-repeat="option in skills"> {{option}}</option>
           </select>
-          <p ng-show="createForm.skill.$error.required && createForm.skill.$dirty" class="help-block">At least one skill is required.</p>
         </div>
+        <div class="options" ng-show='project.skill1'>
+          <select name="skill" ng-model="project.skill2">
+                     <option ng-repeat="option in skills"> {{option}}</option>
+          </select>
+           </div>
+        <div class="options" ng-show='project.skill2'>
+          <select name="skill" ng-model="project.skill3">
+                     <option ng-repeat="option in skills"> {{option}}</option>
+          </select>
+          </div>
+        <div class="options" ng-show='project.skill3'>
+          <select name="skill" ng-model="project.skill4">
+                     <option ng-repeat="option in skills"> {{option}}</option>
+          </select>
+          </div>
+        <div class="options" ng-show='project.skill4'>
+          <select name="skill" ng-model="project.skill5">
+                     <option ng-repeat="option in skills"> {{option}}</option>
+          </select>
+          </div>
+          <p ng-show="createForm.skill.$error.required && createForm.skill.$dirty" class="help-block">At least one skill is required.</p>
 
         <!-- submmit button and error term -->
         <p class="error" ng-if="project.err">{{ project.err }}</p>
