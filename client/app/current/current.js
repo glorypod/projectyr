@@ -2,119 +2,76 @@
   angular.module('projectyr.current', [])
   .controller('CurrentController', CurrentController);
 
-  function CurrentController ($scope, Project, Auth, $location) {
-    $scope.start = null;
-    $scope.end = null;
-    $scope.actTime = 0;
+  function CurrentController ($scope, $interval, Project, Auth, $location) {
 
-    // make sure user is authorized when they access create page
-    // direct user to signin if not authorized
-    $scope.$watch(Auth.isAuth, function(authed){
-        if (authed) {
-          $location.path('/current');
-        } else {
-          $location.path('/signin')
-        } 
-      }, true);
 
-    // for time assign pop up window, watch select project drop down
-    // and set the project and skills as the selected one, so user can assign time to different skills for the peoject
-    $scope.$watch("selectPro", function () {
-      for (var i = 0; i < $scope.projects.length||0; i ++) {
-        if ($scope.projects[i].project_name === $scope.selectPro) {
-            $scope.timeAssignPro = $scope.projects[i]; 
-        }
-      }
-    })
-
-    // init func set the look of the page
+    /* set up page */
     $scope.init = function ()  {
       Project.getOpen()
         .then(function(all) {
-          var temp = all.projects;
-          var skills = [];
-
-          // loop through the projects array received from server
-          // create a unique skills array >> skills
-          for (var i = 0; i < temp.length; i ++) {
-            if (temp[i].skill1) {
-              if (skills.indexOf(temp[i].skill1) === -1) {
-                skills.push(temp[i].skill1);
-              }
-            }
-            if (temp[i].skill2) {
-              if (skills.indexOf(temp[i].skill2) === -1) {
-                skills.push(temp[i].skill2);
-              }
-            }
-            if (temp[i].skill3) {
-              if (skills.indexOf(temp[i].skill3) === -1) {
-                skills.push(temp[i].skill3);
-              }
-            }
-            if (temp[i].skill4) {
-              if (skills.indexOf(temp[i].skill4) === -1) {
-                skills.push(temp[i].skill4);
-              }
-            }
-            if (temp[i].skill5) {
-              if (skills.indexOf(temp[i].skill5) === -1) {
-                skills.push(temp[i].skill5);
-              }
-            }
-          }
-          $scope.projects = temp;
-          $scope.skills = skills;
-
-          // default the timeassign project as the first project for the user before user select a project in the time assign pop up window
-          $scope.timeAssignPro = $scope.projects[0];
-
-           // reset satrt and end so the page show properly.
-          $scope.start = null;
-          $scope.end = null;
+          $scope.projects = all.projects;
+          console.log($scope.projects);
         });
-    };
+    }
+    $scope.projects = {};
+    $scope.currentProject = null;
+    $scope.running = false;
+    $scope.init();
 
-    $scope.startClock = function () {
-      $scope.start = new Date();
-      $scope.end = null;
-    };
+    /* clock functions */
+    $scope.sharedTime = new Date();
+    $interval(function() {
+      $scope.sharedTime = new Date();
+    }, 500);
 
+    var totalElapsedMs = 0;//$scope.current_Project ? $scope.current_Project.act_time * 60 * 60 * 1000 : 0; //min * seconds * ms
+    var elapsedMs = 0;
+    var time;
+    var startTime;
+    var timerPromise;
+    
+    $scope.start = function() {
+      if (!timerPromise) {
+        $scope.running = true;
+        startTime = new Date();
+        timerPromise = $interval(function() {
+          var now = new Date();
+          time = now;
+          elapsedMs = now.getTime() - startTime.getTime();
+        }, 31);
+      }
+    };
+    
+    $scope.pause = function() {
+      $scope.running = false;
+      if (timerPromise) {
+        $interval.cancel(timerPromise);
+        timerPromise = undefined;
+        totalElapsedMs += elapsedMs;
+        elapsedMs = 0;
+      }
+    };
     $scope.addTime = function(){
       var timeToAdd = prompt("How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?");
-      $scope.actTime = Number(timeToAdd);
-      $scope.end = new Date();
+      //$scope.actTime += Number(timeToAdd);
+      totalElapsedMs += timeToAdd * 60 * 60 * 1000;
     };
-
-    $scope.endClock = function () {
-      $scope.end = new Date();
-      $scope.actTime = (($scope.end - $scope.start)/(1000*60*60)/* + 3*/).toFixed(2);
-        if($scope.actTime < .01){
-          $scope.actTime= .01;
-        }
-      $scope.start = null;
+    
+    $scope.stop = function() {
+      //startTime = new Date();
+      //$scope.currentProject.act_time = totalElapsedMs;
+      console.log($scope.currentProject.act_time)
+      totalElapsedMs = elapsedMs = 0;
     };
-
-    // after completeProject send request to server complete, run init file to rerender the current page with new data added
-    $scope.completeProject = function (project) {
-      Project.completeProject(project)
-        .then(function(data){
-          $scope.init();
-        })
+    
+    $scope.getTime = function() {
+      return time;
     };
-
-   // after timeAssign send request to server complete, run init file to rerender the current page with new data added
-    $scope.timeAssign = function () {
-      Project.timeAssign($scope.timeAssignPro)
-        .then(function(data){
-          $scope.init();
-        })
-    }
-
-    $scope.setProject = function(project){
-      $scope.project = project
-    }
-
+    
+    $scope.getElapsedMs = function() {
+      return totalElapsedMs + elapsedMs;
+    };
+  
   };
 
 })();
