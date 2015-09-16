@@ -1,60 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<meta name="viewport" charset="8-utf" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/style.css">
-  	<title>Welcome to projecTYR!</title>
-    <style>
-      .carousel-inner > .item > img,
-      .carousel-inner > .item > a > img {
-          width: 80%;
-          margin: auto;
-      }
-    </style>
-  </head>
- <!-- Navbar -->
-  <nav class="navbar navbar-inverse navbar-static-top" style="margin:0">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
 
-        <a href="#/home" class="navbar-brand">ProjecTyr</a>
-        <div>
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="#/current">Current</a></li>
-            <li><a href="#/create">Create New Project</a></li>
-            <li><a href="#/open">Open Project Data</a></li>
-            <li><a href="#/closed">Closed Project Data</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="collapse navbar-collapse navHeaderCollapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#/signin"><span class="glyphicon glyphicon-log-in"></span> Sign-in</a></li>
-          <li><a href="#/signout"><span class="glyphicon glyphicon-log-out"> Sign-out</a></li>
+<head>
+  <meta name="viewport" charset="8-utf" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Welcome to projecTYR!</title>
+  <style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      width: 80%;
+      margin: auto;
+    }
+
+  </style>
+</head>
+<!-- Navbar -->
+
+<nav class="navbar navbar-inverse navbar-static-top" style="margin:0">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#/" class="navbar-brand">ProjecTyr</a></li>
+          <li><a href="#/current">Current</a></li>
+          <li><a href="#/create">Create Project</a></li>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#/open">open projects</a></li>
+              <li><a href="#/closed">archived projects</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
-  </nav>
+
+    <div class="collapse navbar-collapse navHeaderCollapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#/signin"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+        <li><a href="#/signout"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <!-- End Navbar -->
 
-  <body ng-app="projectyr">
-	<div ui-view>
-    
-  </div>
+<body ng-app="projectyr">
+  <div ui-view></div>
 
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script type="text/javascript" src="bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
+  <script type="text/javascript" src="bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
   <script type="text/javascript" src="bower_components/Chart.js/Chart.min.js"></script>
   <script type="text/javascript" src="app/auth/auth.js"></script>
   <script type="text/javascript" src="app/create/create.js"></script>
@@ -64,7 +71,8 @@
   <script type="text/javascript" src="app/closed/closed.js"></script>
   <script type="text/javascript" src="app/service/serviceAuth.js"></script>
   <script type="text/javascript" src="app/service/serviceProject.js"></script>
-	<script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/app.js"></script>
 
 </body>
+
 </html>

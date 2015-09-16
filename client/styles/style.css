@@ -147,3 +147,10 @@ div form button {
   padding-right: 0;
   font-weight: bold;
 }
+
+/*NAVBAR DROP DOWN */
+
+.navbar-inverse .dropdown-menu {
+  color: #fff;
+  background-color: transparent;
+}
