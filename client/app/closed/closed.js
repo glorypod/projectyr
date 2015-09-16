@@ -1,5 +1,5 @@
 (function(){
-  angular.module('projectyr.closed', [/*'tc.chartjs'*/])
+  angular.module('projectyr.closed', ['tc.chartjs'])
   .controller('ClosedController', ClosedController);
   
   function ClosedController ($scope, $window, $location, Auth, Project) {
