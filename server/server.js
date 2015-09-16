@@ -160,9 +160,25 @@ app.post('/projects/timeAssign', function(req, res) {
                       Skills.updateSkillTime(project.skill3, projId, project.time3)
                         .then(function() {
                           console.log(project.skill3 + ' has been updated');
-                          res.json('succeed');
-                        })
-                    } else {
+                          if(project.skill4 && project.time4) {
+                            Skills.updateSkillTime(project.skill4, projId, project.time4)
+                              .then(function() {
+                                console.log(project.skill4 + ' has been updated');
+                                if(project.skill5 && project.time5) {
+                                  Skills.updateSkillTime(project.skill5, projId, project.time5)
+                                    .then(function() {
+                                      console.log(project.skill5 + ' has been updated');
+                                      res.json('succeed');
+                                    })
+                                  } else {
+                                    res.json('succeed')
+                                  }
+                                })
+                            } else {
+                              res.json('succeed')
+                            }
+                          })
+                      } else {
                       res.json('succeed')
                     }
                   })

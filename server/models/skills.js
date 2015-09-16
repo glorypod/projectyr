@@ -55,7 +55,7 @@ var Skills = module.exports = {
   //if there is a skill, does a query in project times for actual time. returns a promise, and increments time by 3600 to show up on DB rounding. All promises must return a result.
   getSkillTime: function(projects) {
     var skillTimePromises = projects.map(function (project) {
-      var skills = ['skill1', 'skill2', 'skill3'];
+      var skills = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5'];
         var skillsPromises = skills.map(function(skill){
           if (project[skill]) {
             return db.select('skills_id')

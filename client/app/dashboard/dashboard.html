@@ -1,4 +1,4 @@
-<!-- nav bar -->
+ <!-- nav bar -->
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -63,6 +63,8 @@
               <th>{{timeAssignPro.skill1}}</th>
               <th>{{timeAssignPro.skill2}}</th>
               <th>{{timeAssignPro.skill3}}</th>
+              <th>{{timeAssignPro.skill4}}</th>
+              <th>{{timeAssignPro.skill5}}</th>
             </tr>
           </thead>
           <!-- time assigning project and its skills -->
@@ -90,7 +92,21 @@
                   {{ timeAssignPro.time3 = ((actTime - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent3 ? timeAssignPro.percent3 : 100)/ 100).toFixed(2); 
                   timeAssignPro.time3  + " hrs"}}
                 </div>
-              </td>                
+              </td>
+              <td>
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent4" ng-init="33">
+                <div>
+                  {{ timeAssignPro.time4 = ((actTime - timeAssignPro.time3 - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent4 ? timeAssignPro.percent4 : 100)/ 100).toFixed(2); 
+                  timeAssignPro.time4  + " hrs"}}
+                </div>
+              </td>
+              <td>
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent5" ng-init="33">
+                <div>
+                  {{ timeAssignPro.time5 = ((actTime - timeAssignPro.time4 - timeAssignPro.time3- timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent5 ? timeAssignPro.percent5 : 100)/ 100).toFixed(2); 
+                  timeAssignPro.time5  + " hrs"}}
+                </div>
+              </td>                                                
             </tr>
           </tbody>
         </table>

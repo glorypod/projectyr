@@ -52,6 +52,16 @@
                 skills.push(temp[i].skill3);
               }
             }
+            if (temp[i].skill4) {
+              if (skills.indexOf(temp[i].skill4) === -1) {
+                skills.push(temp[i].skill4);
+              }
+            }
+            if (temp[i].skill5) {
+              if (skills.indexOf(temp[i].skill5) === -1) {
+                skills.push(temp[i].skill5);
+              }
+            }
           }
           $scope.projects = temp;
           $scope.skills = skills;
