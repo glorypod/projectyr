@@ -13,11 +13,24 @@ var Projects = module.exports = {
       });
   },
 
-  getActiveProjects: function(userId) {
+  getOpenProjects: function(userId) {
     return db.select()
       .from('projects')
       .where('users_id', userId)
       .andWhere('done', null)
+      .then(function(rows) {
+        return Skills.getSkillTime(rows)
+          .then(function(result) {
+            return result;
+          })
+      });
+  },
+
+  getClosedProjects: function(userId) {
+    return db.select()
+      .from('projects')
+      .where('users_id', userId)
+      .andWhere('done', true)
       .then(function(rows) {
         return Skills.getSkillTime(rows)
           .then(function(result) {

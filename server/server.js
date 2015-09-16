@@ -125,11 +125,24 @@ app.post('/projects/create', function(req, res, next) {
 });
 
 /*  */
-app.get('/projects/getAll', function(req, res) {
+app.get('/projects/open', function(req, res) {
   var username = jwt.decode(req.headers['x-access-token'], 'jmoney');
   Users.findUserId(username)
     .then(function(userId) {
-      Projects.getActiveProjects(userId)
+      Projects.getOpenProjects(userId)
+        .then(function(projects) {
+          var all = {};
+          all.projects = projects;
+          res.json(all);
+        });
+    });
+});
+
+app.get('/projects/closed', function(req, res) {
+  var username = jwt.decode(req.headers['x-access-token'], 'jmoney');
+  Users.findUserId(username)
+    .then(function(userId) {
+      Projects.getClosedProjects(userId)
         .then(function(projects) {
           var all = {};
           all.projects = projects;
