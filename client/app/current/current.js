@@ -58,7 +58,7 @@
     };
     
     $scope.stop = function() {
-      startTime = new Date();
+      startTime = undefined;
       if(totalElapsedMs > 0){
         var timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
         if(timeToAdd < 0.01){

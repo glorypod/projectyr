@@ -23,7 +23,7 @@
             Elapsed ms During this Session: {{ getElapsedMs()}}
           </div>
         </div>
-        <button id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
+        <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
         <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add to Time to Session</button>
         <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Session Clock</button>
         <button id="stop" class="btn btn-danger" ng-click="stop()">End Session</button>
