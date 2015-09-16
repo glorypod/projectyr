@@ -29,7 +29,7 @@
 
     // init func set the look of the page
     $scope.init = function () {
-      Project.getAll()
+      Project.getOpen()
         .then(function(all) {
           var temp = all.projects;
           var skills = [];
