@@ -72,38 +72,38 @@
             <tr>
               <td>{{timeAssignPro.project_name}}</td>
               <td>{{actTime  + " hrs"}}</td>
-              <td>
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent1" ng-init="34">
+              <td ng-if="!!timeAssignPro.skill1">
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent1">
                 <div>
-                  {{ timeAssignPro.time1 = (actTime * (timeAssignPro.percent1 ? timeAssignPro.percent1 : 34) / 100).toFixed(2); 
+                  {{ timeAssignPro.time1 = (actTime * (timeAssignPro.percent1 ? timeAssignPro.percent1 : 0) / 100).toFixed(2); 
                   timeAssignPro.time1 + " hrs"}}
                 </div>
               </td>
-              <td>
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent2" ng-init="33">
+              <td ng-if="!!timeAssignPro.skill2">
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent2">
                 <div>
-                  {{ timeAssignPro.time2 = ((actTime - timeAssignPro.time1) * (timeAssignPro.percent2 ? timeAssignPro.percent2 : 50) / 100).toFixed(2); 
+                  {{ timeAssignPro.time2 = ((actTime - timeAssignPro.time1) * (timeAssignPro.percent2 ? timeAssignPro.percent2 : 0) / 100).toFixed(2); 
                   timeAssignPro.time2+ " hrs"}}
                 </div>
               </td>  
-              <td>
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent3" ng-init="33">
+              <td ng-if="!!timeAssignPro.skill3">
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent3">
                 <div>
-                  {{ timeAssignPro.time3 = ((actTime - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent3 ? timeAssignPro.percent3 : 100)/ 100).toFixed(2); 
+                  {{ timeAssignPro.time3 = ((actTime - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent3 ? timeAssignPro.percent3 : 0)/ 100).toFixed(2); 
                   timeAssignPro.time3  + " hrs"}}
                 </div>
               </td>
-              <td>
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent4" ng-init="33">
+              <td ng-if="!!timeAssignPro.skill4">
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent4">
                 <div>
-                  {{ timeAssignPro.time4 = ((actTime - timeAssignPro.time3 - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent4 ? timeAssignPro.percent4 : 100)/ 100).toFixed(2); 
+                  {{ timeAssignPro.time4 = ((actTime - timeAssignPro.time3 - timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent4 ? timeAssignPro.percent4 : 0)/ 100).toFixed(2); 
                   timeAssignPro.time4  + " hrs"}}
                 </div>
               </td>
-              <td>
-                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent5" ng-init="33">
+              <td ng-if="!!timeAssignPro.skill5">
+                <input type="range" max="100" min="0" ng-model="timeAssignPro.percent5">
                 <div>
-                  {{ timeAssignPro.time5 = ((actTime - timeAssignPro.time4 - timeAssignPro.time3- timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent5 ? timeAssignPro.percent5 : 100)/ 100).toFixed(2); 
+                  {{ timeAssignPro.time5 = ((actTime - timeAssignPro.time4 - timeAssignPro.time3- timeAssignPro.time2 - timeAssignPro.time1) * (timeAssignPro.percent5 ? timeAssignPro.percent5 : 0)/ 100).toFixed(2); 
                   timeAssignPro.time5  + " hrs"}}
                 </div>
               </td>                                                
