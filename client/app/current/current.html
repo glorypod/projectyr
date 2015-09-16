@@ -34,12 +34,17 @@
     <div class="col-md-6">
       <section ng-show="currentProject" class="clock">
         <div>
-          Elapsed Time: {{ getElapsedMs()}} ms
+          <div>
+            Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
+          </div>
+          <div>
+            Elapsed ms During this Session: {{ getElapsedMs()}}
+          </div>
         </div>
-        <button id="start" class="btn btn-success" ng-click="start()">Start Clock</button>
-        <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add Time</button>
-        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Clock</button>
-        <button ng-if="running" id="stop" class="btn btn-danger" ng-click="stop()">Stop</button>
+        <button id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
+        <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add to Time to Session</button>
+        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Session Clock</button>
+        <button id="stop" class="btn btn-danger" ng-click="stop()">End Session</button>
       </section>
     </div>
     <div class="col-md-6">
@@ -48,10 +53,10 @@
           Project Name: {{ currentProject.project_name }}
         </div>
         <div>
-          Time Estimate: {{ currentProject.est_time }}
+          Time Estimate: {{ currentProject.est_time }} hours
         </div>
         <div>
-          Current Time: {{ currentProject.act_time }}
+          Current Time: {{ currentProject.act_time }} hours
         </div>
       </div>
     </div>
@@ -76,4 +81,3 @@
     </div>
   </div>
 </div>
-
