@@ -34,12 +34,17 @@
     <div class="col-md-6">
       <section ng-show="currentProject" class="clock">
         <div>
-          Elapsed Time: {{ getElapsedMs()}} ms
+          <div>
+            Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
+          </div>
+          <div>
+            Elapsed ms During this Session: {{ getElapsedMs()}}
+          </div>
         </div>
-        <button id="start" class="btn btn-success" ng-click="start()">Start Clock</button>
-        <button ng-if="!running" id="assign" class="btn btn-success" ng-click="addTime()">Manually Add Time</button>
-        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Clock</button>
-        <button ng-if="running" id="stop" class="btn btn-danger" ng-click="stop()">Stop</button>
+        <button id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
+        <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add to Time to Session</button>
+        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Session Clock</button>
+        <button id="stop" class="btn btn-danger" ng-click="stop()">End Session</button>
       </section>
     </div>
     <div class="col-md-6">
@@ -48,14 +53,31 @@
           Project Name: {{ currentProject.project_name }}
         </div>
         <div>
-          Time Estimate: {{ currentProject.est_time }}
+          Time Estimate: {{ currentProject.est_time }} hours
         </div>
         <div>
-          Current Time: {{ currentProject.act_time }}
+          Current Time: {{ currentProject.act_time }} hours
         </div>
       </div>
     </div>
   </div>
 </main>
 
-
+<!-- Modal: pop up window for assigning time to projects and skills -->
+<div id="manualTime" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Time</h4>
+      </div>
+      <div class="modal-body">
+        <p>How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?</p>
+        <input name="time" type="text" class="form-control" ng-model="manualTime" required/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addTime(manualTime)">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

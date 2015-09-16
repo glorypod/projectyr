@@ -3,8 +3,6 @@
   .controller('CurrentController', CurrentController);
 
   function CurrentController ($scope, $interval, Project, Auth, $location) {
-
-
     /* set up page */
     $scope.init = function ()  {
       Project.getOpen()
@@ -29,7 +27,10 @@
     var time;
     var startTime;
     var timerPromise;
-    
+    if($scope.currentProject){
+      console.log("Total time: ", $scope.currentProject.act_time);
+    }
+
     $scope.start = function() {
       if (!timerPromise) {
         $scope.running = true;
@@ -51,16 +52,20 @@
         elapsedMs = 0;
       }
     };
-    $scope.addTime = function(){
-      var timeToAdd = prompt("How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?");
+    $scope.addTime = function(timeToAdd){
       //$scope.actTime += Number(timeToAdd);
       totalElapsedMs += timeToAdd * 60 * 60 * 1000;
     };
     
     $scope.stop = function() {
-      //startTime = new Date();
-      //$scope.currentProject.act_time = totalElapsedMs;
-      console.log($scope.currentProject.act_time)
+      startTime = new Date();
+      if(totalElapsedMs > 0){
+        var timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
+        if(timeToAdd < 0.01){
+          timeToAdd = 0.01;
+        }
+        $scope.currentProject.act_time += timeToAdd;
+      }
       totalElapsedMs = elapsedMs = 0;
     };
     
