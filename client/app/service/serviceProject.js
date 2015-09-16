@@ -17,11 +17,22 @@
       });
     };
 
-    // get all the WIP projects for the user
-    function getAll () {
+    // get all the WIP projects for the user//previously getAll
+    function getOpen () {
       return $http({
         method: 'GET',
-        url: '/projects/getAll'
+        url: '/projects/open'
+      })
+      .then(function(resp){
+        return resp.data;
+      })
+    };
+
+    //get all the Completed projects for the user//new
+    function getClosed () {
+      return $http({
+        method: 'GET',
+        url: '/projects/closed'
       })
       .then(function(resp){
         return resp.data;
@@ -57,7 +68,8 @@
 
     return {
       create: create,
-      getAll: getAll,
+      getOpen:getOpen,
+      getClosed:getClosed,
       timeAssign: timeAssign,
       completeProject: completeProject
     }
