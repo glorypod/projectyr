@@ -17,6 +17,7 @@
     "angular": "~1.4.5",
     "angular-ui-router": "~0.2.15",
     "angular-route": "~1.4.5",
+    "tc-angular-chartjs": "~1.0.12",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.5"
   }
