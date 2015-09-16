@@ -22,11 +22,11 @@
       }, true);
 
     // send the user's project input to server
-    // direct to dashboard when succeed
+    // direct to current when succeed
     $scope.create = function () {
       Project.create($scope.project)
         .then(function (hasWIP) {
-          $location.path('/dashboard');
+          $location.path('/current');
         }) 
         .catch(function(err){
           console.log("create new project err: ", err);

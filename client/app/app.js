@@ -4,7 +4,9 @@
     'projectyr.service',
     'projectyr.auth',
     'projectyr.create',
-    'projectyr.dashboard',
+    'projectyr.current',
+    'projectyr.open',
+   /* 'projectyr.closed',*/
     'ngRoute',
     'ui.router'
   ])
@@ -36,16 +38,26 @@
         url: '/create',
         controller: 'CreateController'
       })
-      .state('start', {
-        templateUrl: 'app/dashboard/start.html',
+      .state('start', { //possibly remove (from previous group)
+        templateUrl: 'app/current/start.html',
         url: '/start',
-        controller: 'DashboardController'
+        controller: 'CurrentController'
       })
-      .state('dashboard', {
-        templateUrl: 'app/dashboard/dashboard.html',
-        url: '/dashboard',
-        controller: 'DashboardController'
+      .state('current', {
+        templateUrl: 'app/current/current.html',
+        url: '/current',
+        controller: 'CurrentController'
       })
+      .state('open', {
+        templateUrl: 'app/open/open.html',
+        url: '/open',
+        controller: 'OpenController'
+      })
+      .state('closed', {
+        templateUrl: 'app/closed/closed.html',
+        url: '/closed',
+        controller: 'ClosedController'
+      })            
       .state('signout', {
         templateUrl: 'app/auth/home.html',
         url: '/signout',

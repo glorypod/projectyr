@@ -2,7 +2,7 @@
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#/dashboard">ProjectTyr</a>
+      <a class="navbar-brand" href="#/current">ProjectTyr</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -120,10 +120,10 @@
   </div>
 </div>
 
-<!-- dashboard display table -->
+<!-- current display table -->
 <div class="container" data-ng-init="init()">
   <table class="table table-striped">
-    <!-- dashboard headers -->
+    <!-- current headers -->
     <thead>
       <tr>
         <th>Project</th>
@@ -133,7 +133,7 @@
         <th></th>
       </tr>
     </thead>
-    <!-- dashboard projects -->
+    <!-- current projects -->
     <tbody>
       <tr ng-repeat="project in projects">
         <td>{{project.project_name}}</td>
