@@ -1,6 +1,6 @@
-(function(){
-  // this is a directive on the projectyr.dashboard module
-  angular.module('projectyr.dashboard')
+(function(){/*
+  // this is a directive on the projectyr.current module
+  angular.module('projectyr.current')
 
   .directive('timeTracker', timeTracker);
 
@@ -28,7 +28,7 @@
         return i;
       };
 
-      // time-tracker was used in dashboard.html to hold live time, update the value on the button
+      // time-tracker was used in current.html to hold live time, update the value on the button
       scope.$watch(attrs.timeTracker, function(value) {
         start = value;
         updateTime(); 
@@ -47,6 +47,6 @@
       link: link
     }
 
-  };
+  };*/
 
 })();

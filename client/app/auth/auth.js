@@ -34,7 +34,7 @@
           // if user does not have WIP project, direct user to create a project
           $window.localStorage.setItem('projectyr', data.token);
           if ( !!data.hasWIP ) {
-            $location.path('/dashboard');
+            $location.path('/current');
           } else {
             $location.path('/create');
           }

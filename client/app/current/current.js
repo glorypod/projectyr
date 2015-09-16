@@ -1,8 +1,8 @@
 (function(){
-  angular.module('projectyr.dashboard', [])
-  .controller('DashboardController', DashboardController);
+  angular.module('projectyr.current', [])
+  .controller('CurrentController', CurrentController);
 
-  function DashboardController ($scope, Project, Auth, $location) {
+  function CurrentController ($scope, Project, Auth, $location) {
     $scope.start = null;
     $scope.end = null;
     $scope.actTime = 0;
@@ -11,7 +11,7 @@
     // direct user to signin if not authorized
     $scope.$watch(Auth.isAuth, function(authed){
         if (authed) {
-          $location.path('/dashboard');
+          $location.path('/current');
         } else {
           $location.path('/signin')
         } 
@@ -95,7 +95,7 @@
       $scope.start = null;
     };
 
-    // after completeProject send request to server complete, run init file to rerender the dashboard page with new data added
+    // after completeProject send request to server complete, run init file to rerender the current page with new data added
     $scope.completeProject = function (project) {
       Project.completeProject(project)
         .then(function(data){
@@ -103,7 +103,7 @@
         })
     };
 
-   // after timeAssign send request to server complete, run init file to rerender the dashboard page with new data added
+   // after timeAssign send request to server complete, run init file to rerender the current page with new data added
     $scope.timeAssign = function () {
       Project.timeAssign($scope.timeAssignPro)
         .then(function(data){
