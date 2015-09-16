@@ -1,81 +1,85 @@
 <div class="container" ng-controller="ClosedController" data-ng-init="init()">
-  <h1>Closed Projects</h1>
+    <h1>Closed Projects</h1>
 
-  <hr>
-  
-  <div class="row">
-  <div class="col-md-4">
-    <table class="table table-hover">
-      <thead>
-        <th>Date Completed</th>
-        <th>Project Title</th>
-        <th></th>
-      </thead>
+    <hr>
+    <!-- Table of Projects (left) -->
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date Completed</th>
+                        <th>Project Title</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-      <tbody>
-        <tr ng-repeat="project in projects">
-          <td>TBA</td>
-          <td>{{project.project_name}}</td>
-          <td><a>get details</button></a>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-md-8">
-      <h2>{{projects[i].project_name}}</h2>
-        <div class="row">
-          <div class="col-md-3 dataBox">
-            <p>ESTIMATED</p>
-            <hr>
-            <h2>{{projects[i].est_time}} hrs</h2>
-          </div>
-          <div class="col-md-3 dataBox">
-            <p>ACTUAL</p>
-            <hr>
-            <h2>{{projects[i].act_time}} hrs</h2>
-          </div> 
-          <div class="col-md-3 dataBox">
-            <p>DIFFERENCE</p>
-            <hr>
-            <h2>{{projects[i].est_time - projects[i].act_time}} hrs</h2>
-          </div>                  
+                <tbody>
+                    <tr ng-repeat="project in projects">
+                        <td>TBA</td>
+                        <td>{{project.project_name}}</td>
+                        <td><a>get details</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      <div class="row">
-        <div class="col-md-8 dataBox">
-          <h2>Time Estimation:</h2>
-          <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 dataBox">
-          <h2>Skills Breakdown:</h2>
-          <canvas tc-chartjs-doughnut chart-options="options" chart-data="data" auto-legend></canvas>
-        </div>
-        
-      <!-- Progress Bars for Each Skill -->
 
-        <div class="col-md-4 dataBox">
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='32' aria-valuemin="0" aria-valuemax="100" style="width: 32%;">
-              HTML: 32%
+        <!-- Dashboard Visuals (right) -->
+        <div class="col-md-8">
+            <h2>{{projects[i].project_name}}</h2>
+            <div class="row">
+                <div class="col-md-3 dataBox">
+                    <p>ESTIMATED</p>
+                    <hr>
+                    <h2>{{projects[i].est_time}} hrs</h2>
+                </div>
+                <div class="col-md-3 dataBox">
+                    <p>ACTUAL</p>
+                    <hr>
+                    <h2>{{projects[i].act_time}} hrs</h2>
+                </div>
+                <div class="col-md-3 dataBox">
+                    <p>DIFFERENCE</p>
+                    <hr>
+                    <h2>{{projects[i].est_time - projects[i].act_time}} hrs</h2>
+                </div>
             </div>
-          </div>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%;">
-              Perl: 35%
-            </div>
-          </div>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-              Java: 33%
-            </div>
-          </div>                    
-        </div>
-      </div>
 
-  </div>
-  </div>
-</div>
-</div> 
+            <!-- Time Estimation Bar Graph -->
+            <div class="row">
+                <div class="col-md-8 dataBox">
+                    <h2>Time Estimation:</h2>
+                    <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
+                </div>
+            </div>
+            
+            <!-- Donut Graph of Skills -->
+            <div class="row">
+                <div class="col-md-4 dataBox">
+                    <h2>Skills Breakdown:</h2>
+                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="data" auto-legend></canvas>
+                </div>
+
+                <!-- Progress Bars for Each Skill -->
+                <div class="col-md-4 dataBox">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='32' aria-valuemin="0" aria-valuemax="100" style="width: 32%;">
+                            HTML: 32%
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%;">
+                            Perl: 35%
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
+                            Java: 33%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
