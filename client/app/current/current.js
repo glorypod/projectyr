@@ -3,8 +3,6 @@
   .controller('CurrentController', CurrentController);
 
   function CurrentController ($scope, $interval, Project, Auth, $location) {
-
-
     /* set up page */
     $scope.init = function ()  {
       Project.getOpen()
@@ -29,7 +27,10 @@
     var time;
     var startTime;
     var timerPromise;
-    
+    if($scope.currentProject){
+      console.log("Total time: ", $scope.currentProject.act_time);
+    }
+
     $scope.start = function() {
       if (!timerPromise) {
         $scope.running = true;
@@ -58,9 +59,10 @@
     };
     
     $scope.stop = function() {
-      //startTime = new Date();
-      //$scope.currentProject.act_time = totalElapsedMs;
-      console.log($scope.currentProject.act_time)
+      startTime = new Date();
+      console.log($scope.currentProject.act_time);
+      $scope.currentProject.act_time += (totalElapsedMs / (60 * 60 * 1000)).toFixed(2);
+      console.log($scope.currentProject.act_time);
       totalElapsedMs = elapsedMs = 0;
     };
     
