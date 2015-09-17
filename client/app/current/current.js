@@ -8,14 +8,13 @@
       Project.getOpen()
         .then(function(all) {
           $scope.projects = all.projects;
-          console.log($scope.projects);
+          $scope.running = false;
+          $scope.timeToAdd = 0;
+          $scope.currentProject = $scope.projects[0];
         });
     }
-    $scope.projects = {};
-    $scope.currentProject = null;
-    $scope.running = false;
-    $scope.init();
-    $scope.timeToAdd;
+
+    $scope.init(); 
 
     /* clock functions */
     $scope.sharedTime = new Date();
