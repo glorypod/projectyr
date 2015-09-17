@@ -1,7 +1,7 @@
 (function(){
   angular.module('projectyr.open', ['tc.chartjs'])
   .controller('OpenController', OpenController);
-  
+
   function OpenController ($scope, $window, $location, Auth, Project) {
     $scope.projects = {};
     $scope.data = [];
@@ -9,6 +9,7 @@
   
     $scope.setSelectedProject = function (project) {
       $scope.selectedProject = project;
+      $scope.createDonutData();
       $scope.createBarData();
     } 
 
@@ -16,33 +17,35 @@
       Project.getOpen()
       .then(function (data) {
         $scope.projects = data.projects;
-        console.log($scope.projects, 'all current projects');
         $scope.selectedProject = $scope.projects[0];
+        $scope.createDonutData();
         $scope.createBarData();
-        $scope.i = 0;
-        
-        $scope.data = [
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill1] / $scope.selectedProject.act_time * 100),
-            color:'#F7464A', 
-            highlight: '#FF5A5E',
-            label: $scope.selectedProject.skill1
-          },
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill2] / $scope.selectedProject.act_time * 100),
-            color: '#46BFBD',
-            highlight: '#5AD3D1',
-            label: $scope.selectedProject.skill2
-          },
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill3] / $scope.selectedProject.act_time * 100),
-            color: '#FDB45C',
-            highlight: '#FFC870',
-            label: $scope.selectedProject.skill3
-          }
-        ];
 
+        console.log($scope.projects, 'all open projects');
 })}
+
+    $scope.createDonutData = function () {
+      return $scope.donutData = [
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill1] / $scope.selectedProject.act_time * 100),
+          color:'#F7464A', 
+          highlight: '#FF5A5E',
+          label: $scope.selectedProject.skill1
+        },
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill2] / $scope.selectedProject.act_time * 100),
+          color: '#46BFBD',
+          highlight: '#5AD3D1',
+          label: $scope.selectedProject.skill2
+        },
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill3] / $scope.selectedProject.act_time * 100),
+          color: '#FDB45C',
+          highlight: '#FFC870',
+          label: $scope.selectedProject.skill3
+        }
+      ];
+    }
 
     $scope.createBarData = function () {
         return $scope.barData = {
@@ -57,7 +60,7 @@
           data: [$scope.selectedProject.est_time]
         },
         {
-          label: 'actual time: ' +$scope.selectedProject.act_time + 'hrs',
+          label: 'actual time: ' + $scope.selectedProject.act_time + 'hrs',
           fillColor: 'rgba(151,187,205,0.5)',
           strokeColor: 'rgba(151,187,205,0.8)',
           highlightFill: 'rgba(151,187,205,0.75)',

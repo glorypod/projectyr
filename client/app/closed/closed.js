@@ -16,33 +16,33 @@
       Project.getClosed()
       .then(function (data) {
         $scope.projects = data.projects;
-        console.log($scope.projects, 'all current projects');
+        console.log($scope.projects, 'all closed projects');
         $scope.selectedProject = $scope.projects[0];
         $scope.createBarData();
         $scope.i = 0;
-        
-        $scope.data = [
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill1] / $scope.selectedProject.act_time * 100),
-            color:'#F7464A', 
-            highlight: '#FF5A5E',
-            label: $scope.selectedProject.skill1
-          },
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill2] / $scope.selectedProject.act_time * 100),
-            color: '#46BFBD',
-            highlight: '#5AD3D1',
-            label: $scope.selectedProject.skill2
-          },
-          {
-            value: Math.round($scope.selectedProject[$scope.selectedProject.skill3] / $scope.selectedProject.act_time * 100),
-            color: '#FDB45C',
-            highlight: '#FFC870',
-            label: $scope.selectedProject.skill3
-          }
-        ];
+})}
 
-      })
+    $scope.createDonutData = function () {
+      return $scope.data = [
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill1] / $scope.selectedProject.act_time * 100),
+          color:'#F7464A', 
+          highlight: '#FF5A5E',
+          label: $scope.selectedProject.skill1
+        },
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill2] / $scope.selectedProject.act_time * 100),
+          color: '#46BFBD',
+          highlight: '#5AD3D1',
+          label: $scope.selectedProject.skill2
+        },
+        {
+          value: Math.round($scope.selectedProject[$scope.selectedProject.skill3] / $scope.selectedProject.act_time * 100),
+          color: '#FDB45C',
+          highlight: '#FFC870',
+          label: $scope.selectedProject.skill3
+        }
+      ];
     }
 
     $scope.createBarData = function () {
@@ -67,7 +67,8 @@
         }
           ]
         };
-      }    
+      }
+
 
     $scope.options =  {
 
@@ -147,4 +148,6 @@
 
   }
 })();
+
+
 
