@@ -32,17 +32,17 @@
                 <div class="col-md-3 dataBox">
                     <p>ESTIMATED</p>
                     <hr>
-                    <h2>{{ selectedProject.est_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time | number:0 }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>ACTUAL</p>
                     <hr>
-                    <h2>{{ selectedProject.act_time }} hrs</h2>
+                    <h2>{{ selectedProject.act_time | number:0 }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>DIFFERENCE</p>
                     <hr>
-                    <h2>{{ selectedProject.est_time - selectedProject.act_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time - selectedProject.act_time | number:0 }} hrs</h2>
                 </div>
             </div>
 
