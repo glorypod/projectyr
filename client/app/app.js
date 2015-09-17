@@ -8,7 +8,8 @@
     'projectyr.open',
     'projectyr.closed',
     'ngRoute',
-    'ui.router'
+    'ui.router',
+    'timer'
   ])
   .config(config)
   .factory('AttachTokens', AttachTokens);

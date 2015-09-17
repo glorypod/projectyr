@@ -1,33 +1,29 @@
-<main class="container row">
+<main>
   <div class="row">
     <div class="col-md-12">
-      <h1 class="selectCurrent">
-        <form class="forms">
-          <div class="form-group">
-            <select ng-model="currentProject" ng-options="project.project_name for project in projects">
-                <option value="">Select a Project</option>
-            </select>
-          </div>
-        </form>
-      </h1>
+      <form class="forms">
+        <div class="form-group">
+          <select ng-model="currentProject" ng-options="project.project_name for project in projects">
+              <option value="">Select a Project</option>
+          </select>
+        </div>
+      </form>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      <section ng-show="currentProject" class="container clock">
-        <div>
-          <div>
-            Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
-          </div>
-          <div>
-            Elapsed ms During this Session: {{ getElapsedMs()}}
-          </div>
+    <div ng-show="currentProject" class="col-md-6 container timer">
+        <div class="timer-display">
+          <timer autostart="false" start-time="1357020000000">
+              <div>{{days}} days</div>
+              <div class="clock">{{hours}}:{{minutes}}:{{seconds}}</div>
+          </timer>
         </div>
-        <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()">Start</button>
-        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Stop</button>
-        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
-        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">End</button>
-      </section>
+        <div class="timer-controls">
+          <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
+          <button ng-if="running" id="stop" class="btn btn-warning" ng-click="stop()"><i class="fa fa-pause"></i></button>
+          <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
+          <button id="end" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="end()">End</button><!-- ng-if elapsed -->
+        </div>
     </div>
     <div class="col-md-6">
       <div ng-show="currentProject">
