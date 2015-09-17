@@ -3,28 +3,46 @@
   .controller('CurrentController', CurrentController);
 
   function CurrentController ($scope, $rootScope, $interval, Project, Auth, $location) {
-    $scope.setDefaults = function(){
-      $scope.running = false;
-      $scope.timeToAdd = 0;
-      $scope.started = false;
-      $scope.currentProject = $rootScope.project || $scope.projects[0];
-      $scope.totalElapsed = $scope.currentProject.act_time * 60 * 60 * 1000;
-    }
+    /* set up page */
     $rootScope.init = function ()  {
       Project.getOpen()
         .then(function(all) {
           $scope.projects = all.projects;
-          $scope.setDefaults();
+          $scope.running = false;
+          $scope.timeToAdd = 0;
+          $scope.currentProject = $rootScope.project || $scope.projects[0];
+          $scope.running = false;
+          $scope.started = false;
         });
     }
 
-    $scope.projects = {};
-    $scope.currentProject = null;
-    $scope.totalElapsed;
-    $scope.timeToAdd;
-    $rootScope.init();
-    
+    $rootScope.init(); 
+
+    /* clock functions */
+    $scope.sharedTime = new Date();
+    $interval(function() {
+      $scope.sharedTime = new Date();
+    }, 500);
+
+    var totalElapsedMs = 0;//$scope.current_Project ? $scope.current_Project.act_time * 60 * 60 * 1000 : 0; //min * seconds * ms
+    var elapsedMs = 0;
+    var time;
+    var startTime;
+    var timerPromise;
+    if($scope.currentProject){
+      console.log("Total time: ", $scope.currentProject.act_time);
+    }
+
     $scope.start = function() {
+      if (!timerPromise) {
+        $scope.running = true;
+        startTime = new Date();
+        timerPromise = $interval(function() {
+          var now = new Date();
+          time = now;
+          elapsedMs = now.getTime() - startTime.getTime();
+        }, 31);
+      }
       if(!$scope.started) {
         $scope.$broadcast('timer-start');
       } else {
@@ -32,25 +50,44 @@
       }
       $scope.started = $scope.started || true;
       $scope.running = true;
-    }
-
-    $scope.stop = function() {
+    };
+    
+    $scope.pause = function() {
+      $scope.running = false;
+      if (timerPromise) {
+        $interval.cancel(timerPromise);
+        timerPromise = undefined;
+        totalElapsedMs += elapsedMs;
+        elapsedMs = 0;
+      }
       $scope.$broadcast('timer-stop');
       $scope.running = false;
-    }
-
-    $scope.$on('timer-stopped', function(event, data){
-      $scope.timeToAdd += data.millis;
-      console.log($scope.timeToAdd);
-    });
-
-    $scope.end = function(){
-      $scope.timeToAdd = Number(($scope.timeToAdd / (60 * 60 * 1000)).toFixed(2));
-      if($scope.timeToAdd < 0.01) $scope.timeToAdd = 0.01;
-      $scope.currentProject.act_time += $scope.timeToAdd;
+    };
+    $scope.addTime = function(){
+      //$scope.actTime += Number(timeToAdd);
+      totalElapsedMs += $scope.timeToAdd * 60 * 60 * 1000;
+    };
+    
+    $scope.stop = function() {
+      startTime = undefined;
+      if(totalElapsedMs > 0){
+        $scope.timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
+        if($scope.timeToAdd < 0.01){
+          $scope.timeToAdd = 0.01;
+        }
+        $scope.currentProject.act_time += $scope.timeToAdd;
+      }
+      totalElapsedMs = elapsedMs = 0;
       $scope.$broadcast('timer-reset');
-      $scope.setDefaults();
-    }
+    };
+    
+    $scope.getTime = function() {
+      return time;
+    };
+    
+    $scope.getElapsedMs = function() {
+      return totalElapsedMs + elapsedMs;
+    };
 
     $scope.timeAssign = function () {
       Project.timeAssign($scope.currentProject)
