@@ -42,7 +42,8 @@
           }
         ];
 
-})}
+      })
+    }
 
     $scope.createBarData = function () {
         return $scope.barData = {
@@ -67,7 +68,6 @@
           ]
         };
       }    
-
 
     $scope.options =  {
 
