@@ -5,6 +5,11 @@
   src: url('../fonts/joel-carrouche_norse/Norse.otf');
 }
 
+@font-face {
+  font-family: "Digital";
+  src: url('../fonts/digital-7/digital-7.ttf');
+}
+
 /********** Sitewide Styles **********/
 body {
   background-color:#fff;
@@ -62,6 +67,10 @@ blockquote {
 }
 
 /********** Current **********/
+
+main {
+  margin-top: 4%;
+}
 .timer {
   text-align: center;
   font-size: 2em;
@@ -69,6 +78,7 @@ blockquote {
 
 .timer .clock {
   font-size: 2em;
+  font-family: Digital;
   background-color: black;
   color: red;
   width: 35%;
