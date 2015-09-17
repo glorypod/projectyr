@@ -8,6 +8,22 @@
 
   function Visual ($scope, $location, $window) {
 
+    function setSelectedProject = function(project) {
+
+    }
+
+    function createDonutData = function () {
+
+    }
+
+    function createBarData = function () {
+
+    }
+
+    var barOptions = {};
+
+    var options = {};
+
   }
 
 // return obj of all functions in Visual
