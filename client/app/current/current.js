@@ -41,10 +41,12 @@
 
     $scope.$on('timer-stopped', function(event, data){
       $scope.timeToAdd += data.millis;
+      console.log($scope.timeToAdd);
     });
 
     $scope.end = function(){
       $scope.timeToAdd = Number(($scope.timeToAdd / (60 * 60 * 1000)).toFixed(2));
+      if($scope.timeToAdd < 0.01) $scope.timeToAdd = 0.01;
       $scope.currentProject.act_time += $scope.timeToAdd;
       $scope.$broadcast('timer-reset');
       $scope.setDefaults();
