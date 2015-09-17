@@ -13,9 +13,8 @@
   <div class="row">
     <div ng-show="currentProject" class="col-md-6 container timer">
         <div class="timer-display">
-          <timer autostart="false" start-time="1357020000000">
-              <div>{{days}} days</div>
-              <div class="clock">{{hours}}:{{minutes}}:{{seconds}}</div>
+          <timer autostart="false" interval="1000">
+              <div class="clock" ng-model="sessionElapsed">{{hhours}}:{{mminutes}}:{{sseconds}}</div>
           </timer>
         </div>
         <div class="timer-controls">

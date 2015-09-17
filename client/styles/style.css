@@ -67,6 +67,10 @@ blockquote {
 }
 
 /********** Current **********/
+
+main {
+  margin-top: 4%;
+}
 .timer {
   text-align: center;
   font-size: 2em;
