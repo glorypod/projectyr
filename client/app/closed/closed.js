@@ -6,12 +6,19 @@
     $scope.projects = {};
     $scope.data = [];
     $scope.barData = {};
+  
+    $scope.setSelectedProject = function (project) {
+      $scope.selectedProject = project;
+      $scope.createBarData();
+    } 
+
     $scope.init = function () {
       Project.getClosed()
       .then(function (data) {
         $scope.projects = data.projects;
         console.log($scope.projects, 'all current projects');
         $scope.selectedProject = $scope.projects[0];
+        $scope.createBarData();
         $scope.i = 0;
         
         $scope.data = [
@@ -35,7 +42,10 @@
           }
         ];
 
-        $scope.barData = {
+})}
+
+    $scope.createBarData = function () {
+        return $scope.barData = {
           labels: ['times'],
           datasets: [
         {
@@ -56,8 +66,7 @@
         }
           ]
         };
-      })
-    }
+      }    
 
 
     $scope.options =  {
