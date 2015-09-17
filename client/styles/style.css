@@ -49,12 +49,6 @@ blockquote {
   font-weight: bold;
 }
 
-.clock button {
-  display: block;
-  margin: 1%;
-  width: 20%;
-}
-
 .about-tyr-poem .big {
   font-size: 4.5em;
 }
@@ -67,9 +61,32 @@ blockquote {
   text-align: center;
 }
 
+/********** Current **********/
+.timer {
+  text-align: center;
+  font-size: 2em;
+}
+
+.timer .clock {
+  font-size: 2em;
+  background-color: black;
+  color: red;
+  width: 35%;
+  margin: 1% auto;
+  padding: 1% 2%;
+}
+
+.timer .btn {
+  display: block;
+  width: 35%;
+  margin: 1% auto;
+}
+
+.timer-display {
+  width: 100%;
+}
+
 /********** Login **********/
-
-
 .form-login {
     background-color: #EDEDED;
     padding-top: 10px;
