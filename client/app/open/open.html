@@ -19,7 +19,7 @@
                     <tr ng-repeat="project in projects">
                         <td>{{ project.creation_time.split(",")[0] }}</td>
                         <td>{{ project.project_name }}</td>
-                        <td><a>get details</a></td>
+                        <td><a ng-click="setSelectedProject(project)">get details</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -27,22 +27,22 @@
 
         <!-- Dashboard Visuals (right) -->
         <div class="col-md-8">
-            <h2>{{ projects[i].project_name }}</h2>
+            <h2>{{ selectedProject.project_name }}</h2>
             <div class="row">
                 <div class="col-md-3 dataBox">
                     <p>ESTIMATED</p>
                     <hr>
-                    <h2>{{ projects[i].est_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>ACTUAL</p>
                     <hr>
-                    <h2>{{ projects[i].act_time }} hrs</h2>
+                    <h2>{{ selectedProject.act_time }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>DIFFERENCE</p>
                     <hr>
-                    <h2>{{ projects[i].est_time - projects[i].act_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time - selectedProject.act_time }} hrs</h2>
                 </div>
             </div>
 
