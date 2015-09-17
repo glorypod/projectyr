@@ -2,7 +2,7 @@
   angular.module('projectyr.closed', ['tc.chartjs'])
   .controller('ClosedController', ClosedController);
   
-  function ClosedController ($scope, $window, $location, Auth, Project) {
+  function ClosedController ($scope, $window, $location, Auth, Project, Visual) {
     $scope.projects = {};
     $scope.data = [];
     $scope.barData = {};

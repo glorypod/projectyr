@@ -2,7 +2,7 @@
   angular.module('projectyr.open', ['tc.chartjs'])
   .controller('OpenController', OpenController);
 
-  function OpenController ($scope, $window, $location, Auth, Project) {
+  function OpenController ($scope, $window, $location, Auth, Project, Visual) {
     $scope.projects = {};
     $scope.data = [];
     $scope.barData = {};
