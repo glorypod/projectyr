@@ -8,7 +8,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Date Completed</th>
+                        <th>Date Created</th>
                         <th>Project Title</th>
                         <th></th>
                     </tr>
@@ -16,9 +16,9 @@
 
                 <tbody>
                     <tr ng-repeat="project in projects">
-                        <td>{{ project.completion_time.split(",")[0] }}</td>
+                        <td>{{ project.creation_time.split(",")[0] }}</td>
                         <td>{{ project.project_name }}</td>
-                        <td><a>get details</a></td>
+                        <td><a ng-click="setSelectedProject(project)">get details</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -26,22 +26,22 @@
 
         <!-- Dashboard Visuals (right) -->
         <div class="col-md-8">
-            <h2>{{ projects[i].project_name }}</h2>
+            <h2>{{ selectedProject.project_name }}</h2>
             <div class="row">
                 <div class="col-md-3 dataBox">
                     <p>ESTIMATED</p>
                     <hr>
-                    <h2>{{ projects[i].est_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>ACTUAL</p>
                     <hr>
-                    <h2>{{ projects[i].act_time }} hrs</h2>
+                    <h2>{{ selectedProject.act_time }} hrs</h2>
                 </div>
                 <div class="col-md-3 dataBox">
                     <p>DIFFERENCE</p>
                     <hr>
-                    <h2>{{ projects[i].est_time - projects[i].act_time }} hrs</h2>
+                    <h2>{{ selectedProject.est_time - selectedProject.act_time }} hrs</h2>
                 </div>
             </div>
 
@@ -57,27 +57,27 @@
             <div class="row">
                 <div class="col-md-4 dataBox">
                     <h2>Skills Breakdown:</h2>
-                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="data" auto-legend></canvas>
+                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
                 </div>
 
                 <!-- Progress Bars for Each Skill -->
-                <div class="col-md-4 dataBox">
+<!--                 <div class="col-md-4 dataBox">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='{{ data[i].value }}' aria-valuemin="0" aria-valuemax="100" style="width: {{ data[i].value }}%;">
-                            {{ projects[i].skill1 }} : {{ data[i].value }} %
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='32' aria-valuemin="0" aria-valuemax="100" style="width: 32%;">
+                            HTML: 32%
                         </div>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%;">
-                            {{ projects[i].skill2 }} : {{ data[i+1].value }} %
+                            Perl: 35%
                         </div>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-                            {{ projects[i].skill3 }} : {{ data[i+2].value }} %
+                            Java: 33%
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
