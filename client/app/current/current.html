@@ -1,16 +1,5 @@
 <main>
   <div class="row">
-    <div class="col-md-12">
-      <form class="forms">
-        <div class="form-group">
-          <select ng-model="currentProject" ng-options="project.project_name for project in projects">
-              <option value="">Select a Project</option>
-          </select>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="row">
     <div ng-show="currentProject" class="col-md-6 container timer">
         <div class="timer-display">
           <timer autostart="false" start-time="1357020000000">
