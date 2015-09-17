@@ -76,6 +76,13 @@
     $scope.getElapsedMs = function() {
       return totalElapsedMs + elapsedMs;
     };
+
+    $scope.timeAssign = function () {
+      Project.timeAssign($scope.currentProject)
+        .then(function(data){
+          $scope.init();
+        })
+    };
   
   };
 
