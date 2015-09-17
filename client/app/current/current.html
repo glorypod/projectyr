@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <section ng-show="currentProject" class="clock">
+      <section ng-show="currentProject" class="container clock">
         <div>
           <div>
             Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
@@ -23,10 +23,10 @@
             Elapsed ms During this Session: {{ getElapsedMs()}}
           </div>
         </div>
-        <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
-        <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add to Time to Session</button>
-        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Session Clock</button>
-        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">End Session</button>
+        <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()">Start</button>
+        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Stop</button>
+        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
+        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">End</button>
       </section>
     </div>
     <div class="col-md-6">
