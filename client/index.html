@@ -17,13 +17,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div ng-controller="IndexController">
+        <div>
           <ul class="nav navbar-nav navbar-left">
             <li><a href="#/" class="navbar-brand">ProjecTyr</a></li>
-            <li class="dropdown">
+            <li class="dropdown" ng-controller="IndexController">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
-              <ul class="dropdown-menu" ng-repeat="project in projects">
-                <li><a href="#/current">{{project.project_name}}</a></li>
+              <ul class="dropdown-menu">
+                <li ng-repeat="project in projects"><a href="#/current" ng-click="setProject(project)">{{project.project_name}}</a></li>
               </ul>
             </li>
             <li><a href="#/create">Create Project</a></li>
