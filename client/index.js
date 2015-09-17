@@ -10,7 +10,8 @@
       });
 
     $scope.setProject = function(project){
-      $rootScope.init(project);
+      $rootScope.project = project;
+      $rootScope.init();
     }
 
   }
