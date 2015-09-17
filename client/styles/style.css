@@ -1,18 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 
+@font-face {
+  font-family: "Norse";
+  src: url('../fonts/joel-carrouche_norse/Norse.otf');
+}
+
+/********** Sitewide Styles **********/
 body {
   background-color:#fff;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
 }
 
-h1{
-  font-size: 5.0em;
+h1, h2{
   font:Tahoma;
   text-align: center;
 }
 
-h4{
+h4 {
   font-family: sans-serif;
   font-weight: bold;
   /*color: steelblue;*/
@@ -23,24 +28,40 @@ h4{
   background-color: lightgrey;
 }
 
-.carousel-caption{
-  top: 30%;
-  bottom:auto;
-  color:black;
-}
-
-img{
-  opacity: .4;
-  width: 100%;
-}
-
 blockquote {
     border: none;
 }
 
-.row{
-  text-align:center;
+/********** Home **********/
+.img img{
+   float: right;
+   width: 400px;
+   margin-bottom: 5%;
 }
+
+.main {
+  margin-top: 2%;
+}
+.about-tyr-poem {
+  padding-top: 15%;
+  text-align: center;
+  font-family: Norse;
+  font-weight: bold;
+}
+
+.about-tyr-poem .big {
+  font-size: 4.5em;
+}
+
+.about-tyr-poem .small {
+  font-size: 2.5em;
+}
+
+#copyright {
+  text-align: center;
+}
+
+/********** Login **********/
 
 
 .form-login {
