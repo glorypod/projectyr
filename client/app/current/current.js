@@ -15,6 +15,7 @@
     $scope.currentProject = null;
     $scope.running = false;
     $scope.init();
+    $scope.timeToAdd;
 
     /* clock functions */
     $scope.sharedTime = new Date();
@@ -52,19 +53,19 @@
         elapsedMs = 0;
       }
     };
-    $scope.addTime = function(timeToAdd){
+    $scope.addTime = function(){
       //$scope.actTime += Number(timeToAdd);
-      totalElapsedMs += timeToAdd * 60 * 60 * 1000;
+      totalElapsedMs += $scope.timeToAdd * 60 * 60 * 1000;
     };
     
     $scope.stop = function() {
       startTime = undefined;
       if(totalElapsedMs > 0){
-        var timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
-        if(timeToAdd < 0.01){
-          timeToAdd = 0.01;
+        $scope.timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
+        if($scope.timeToAdd < 0.01){
+          $scope.timeToAdd = 0.01;
         }
-        $scope.currentProject.act_time += timeToAdd;
+        $scope.currentProject.act_time += $scope.timeToAdd;
       }
       totalElapsedMs = elapsedMs = 0;
     };
