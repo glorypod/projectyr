@@ -63,18 +63,18 @@
                 <!-- Progress Bars for Each Skill -->
                 <div class="col-md-4 dataBox">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='32' aria-valuemin="0" aria-valuemax="100" style="width: 32%;">
-                            HTML: 32%
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow='{{ data[i].value }}' aria-valuemin="0" aria-valuemax="100" style="width: {{ data[i].value }}%;">
+                            {{ projects[i].skill1 }} : {{ data[i].value }} %
                         </div>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%;">
-                            Perl: 35%
+                            {{ projects[i].skill2 }} : {{ data[i+1].value }} %
                         </div>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-                            Java: 33%
+                            {{ projects[i].skill3 }} : {{ data[i+2].value }} %
                         </div>
                     </div>
                 </div>

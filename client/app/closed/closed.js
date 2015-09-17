@@ -11,27 +11,27 @@
       .then(function (data) {
         $scope.projects = data.projects;
         console.log($scope.projects, 'all current projects');
-        var selectedProject = $scope.projects[0];
+        $scope.selectedProject = $scope.projects[0];
         $scope.i = 0;
         
         $scope.data = [
           {
-            value: Math.round(selectedProject[selectedProject.skill1] / selectedProject.act_time * 100),
+            value: Math.round($scope.selectedProject[$scope.selectedProject.skill1] / $scope.selectedProject.act_time * 100),
             color:'#F7464A', 
             highlight: '#FF5A5E',
-            label: selectedProject.skill1
+            label: $scope.selectedProject.skill1
           },
           {
-            value: Math.round(selectedProject[selectedProject.skill2] / selectedProject.act_time * 100),
+            value: Math.round($scope.selectedProject[$scope.selectedProject.skill2] / $scope.selectedProject.act_time * 100),
             color: '#46BFBD',
             highlight: '#5AD3D1',
-            label: selectedProject.skill2
+            label: $scope.selectedProject.skill2
           },
           {
-            value: Math.round(selectedProject[selectedProject.skill3] / selectedProject.act_time * 100),
+            value: Math.round($scope.selectedProject[$scope.selectedProject.skill3] / $scope.selectedProject.act_time * 100),
             color: '#FDB45C',
             highlight: '#FFC870',
-            label: selectedProject.skill3
+            label: $scope.selectedProject.skill3
           }
         ];
 
@@ -39,20 +39,20 @@
           labels: ['times'],
           datasets: [
         {
-          label: 'estimated time: ' + selectedProject.est_time + 'hrs',
+          label: 'estimated time: ' + $scope.selectedProject.est_time + 'hrs',
           fillColor: 'rgba(220,220,220,0.5)',
           strokeColor: 'rgba(220,220,220,0.8)',
           highlightFill: 'rgba(220,220,220,0.75)',
           highlightStroke: 'rgba(220,220,220,1)',
-          data: [selectedProject.est_time]
+          data: [$scope.selectedProject.est_time]
         },
         {
-          label: 'actual time: ' +selectedProject.act_time + 'hrs',
+          label: 'actual time: ' +$scope.selectedProject.act_time + 'hrs',
           fillColor: 'rgba(151,187,205,0.5)',
           strokeColor: 'rgba(151,187,205,0.8)',
           highlightFill: 'rgba(151,187,205,0.75)',
           highlightStroke: 'rgba(151,187,205,1)',
-          data: [selectedProject.act_time]
+          data: [$scope.selectedProject.act_time]
         }
           ]
         };
