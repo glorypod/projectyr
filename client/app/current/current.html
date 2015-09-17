@@ -26,7 +26,7 @@
         <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()">Run Session Clock</button>
         <button ng-if="!running" id="assign" class="btn btn-success" data-toggle="modal" data-target="#manualTime">Manually Add to Time to Session</button>
         <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()">Pause Session Clock</button>
-        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()">End Session</button>
+        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">End Session</button>
       </section>
     </div>
     <div class="col-md-6">
@@ -55,10 +55,10 @@
       </div>
       <div class="modal-body">
         <p>How much time would you like to assign to a project (enter in a fraction of hours (2.00, 0.50, 1.25 etc))?</p>
-        <input name="time" type="text" class="form-control" ng-model="manualTime" required/>
+        <input name="time" type="text" class="form-control" ng-model="timeToAdd" required/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addTime(manualTime)">Add</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addTime()">Add</button>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Assign your time <mark>{{currentProject.act_time + " hrs"}}</mark></h4>
+        <h4 class="modal-title">Assign your time <mark>{{timeToAdd + " hrs"}}</mark></h4>
       </div>
       <div class="modal-body">
 
@@ -93,39 +93,39 @@
           <tbody>
             <tr>
               <td>{{currentProject.project_name}}</td>
-              <td>{{currentProject.act_time  + " hrs"}}</td>
+              <td>{{timeToAdd  + " hrs"}}</td>
               <td ng-if="!!currentProject.skill1">
                 <input type="range" max="100" min="0" ng-model="currentProject.percent1">
                 <div>
-                  {{ currentProject.time1 = (currentProject.act_time * (currentProject.percent1 ? currentProject.percent1 : 0) / 100).toFixed(2); 
+                  {{ currentProject.time1 = (timeToAdd * (currentProject.percent1 ? currentProject.percent1 : 0) / 100).toFixed(2); 
                   currentProject.time1 + " hrs"}}
                 </div>
               </td>
               <td ng-if="!!currentProject.skill2">
                 <input type="range" max="100" min="0" ng-model="currentProject.percent2">
                 <div>
-                  {{ currentProject.time2 = ((currentProject.act_time - currentProject.time1) * (currentProject.percent2 ? currentProject.percent2 : 0) / 100).toFixed(2); 
+                  {{ currentProject.time2 = ((timeToAdd - currentProject.time1) * (currentProject.percent2 ? currentProject.percent2 : 0) / 100).toFixed(2); 
                   currentProject.time2+ " hrs"}}
                 </div>
               </td>  
               <td ng-if="!!currentProject.skill3">
                 <input type="range" max="100" min="0" ng-model="currentProject.percent3">
                 <div>
-                  {{ currentProject.time3 = ((currentProject.act_time - currentProject.time2 - currentProject.time1) * (currentProject.percent3 ? currentProject.percent3 : 0)/ 100).toFixed(2); 
+                  {{ currentProject.time3 = ((timeToAdd - currentProject.time2 - currentProject.time1) * (currentProject.percent3 ? currentProject.percent3 : 0)/ 100).toFixed(2); 
                   currentProject.time3  + " hrs"}}
                 </div>
               </td>
               <td ng-if="!!currentProject.skill4">
                 <input type="range" max="100" min="0" ng-model="currentProject.percent4">
                 <div>
-                  {{ currentProject.time4 = ((currentProject.act_time - currentProject.time3 - currentProject.time2 - currentProject.time1) * (currentProject.percent4 ? currentProject.percent4 : 0)/ 100).toFixed(2); 
+                  {{ currentProject.time4 = ((timeToAdd - currentProject.time3 - currentProject.time2 - currentProject.time1) * (currentProject.percent4 ? currentProject.percent4 : 0)/ 100).toFixed(2); 
                   currentProject.time4  + " hrs"}}
                 </div>
               </td>
               <td ng-if="!!currentProject.skill5">
                 <input type="range" max="100" min="0" ng-model="currentProject.percent5">
                 <div>
-                  {{ currentProject.time5 = ((currentProject.act_time - currentProject.time4 - currentProject.time3- currentProject.time2 - currentProject.time1) * (currentProject.percent5 ? currentProject.percent5 : 0)/ 100).toFixed(2); 
+                  {{ currentProject.time5 = ((timeToAdd - currentProject.time4 - currentProject.time3- currentProject.time2 - currentProject.time1) * (currentProject.percent5 ? currentProject.percent5 : 0)/ 100).toFixed(2); 
                   currentProject.time5  + " hrs"}}
                 </div>
               </td>                                                
