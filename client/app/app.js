@@ -7,6 +7,7 @@
     'projectyr.current',
     'projectyr.open',
     'projectyr.closed',
+    'projectyr.index',
     'ngRoute',
     'ui.router',
     'timer'
