@@ -340,3 +340,22 @@ div form button {
   position:relative;
   top:1px;
 }
+
+
+.tc-chart-js-legend {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.tc-chart-js-legend li {
+  display: block;
+  float: left;
+  padding:10px;
+}
+.tc-chart-js-legend li span {
+  border-radius: 50%;
+  width:15px;
+  height:15px;
+  display:block;
+  float:left;
+  margin-right:10px;
+}
