@@ -3,13 +3,13 @@
 
     <hr>
     
-    <!-- Table of Projects (left) -->
+     <!-- Table of Projects (left) -->
     <div class="row">
         <div class="col-md-4">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Date Completed</th>
+                        <th>Date Created</th>
                         <th>Project Title</th>
                         <th></th>
                     </tr>
@@ -17,7 +17,7 @@
 
                 <tbody>
                     <tr ng-repeat="project in projects">
-                        <td>{{ project.completion_time.split(",")[0] }}</td>
+                        <td>{{ project.creation_time.split(",")[0] }}</td>
                         <td>{{ project.project_name }}</td>
                         <td><a ng-click="setSelectedProject(project)">get details</a></td>
                     </tr>
@@ -28,37 +28,74 @@
         <!-- Dashboard Visuals (right) -->
         <div class="col-md-8">
             <h2>{{ project.project_name }}</h2>
+            
             <div class="row">
-                <div class="col-md-3 dataBox">
-                    <p>ESTIMATED</p>
+            <!-- Time Estimation Bar Graph -->
+                <div class="col-sm-6 dataBox bar graph">
+                    <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL TIME</strong></p>
+                    <hr>
+                    <canvas class="bar" tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
+                </div>
+            <!-- Donut Graph of Skills -->
+                <div class="col-md-5 dataBox graph">
+                    <p><strong>SKILLS BREAKDOWN</strong></p>
+                    <hr>
+                    <canvas class="donut" tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
+                </div>
+            
+            </div>
+            <div class="row">
+                <div class="col-sm-3 dataBox">
+                    <p>ESTIMATED:</p>
                     <hr>
                     <h2>{{ project.est_time | number:0 }} hrs</h2>
-                </div>
-                <div class="col-md-3 dataBox">
-                    <p>ACTUAL</p>
+                </div>                         
+                <div class="col-sm-3 dataBox">
+                    <p>ACTUAL:</p>
                     <hr>
                     <h2>{{ project.act_time | number:0 }} hrs</h2>
-                </div>
-                <div class="col-md-3 dataBox">
-                    <p>DIFFERENCE</p>
+                </div>                             
+                <div class="col-sm-3 dataBox">
+                    <p>DIFFERENCE:</p>
                     <hr>
                     <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
                 </div>
             </div>
 
-            <!-- Time Estimation Bar Graph -->
+             <!-- start of additional  -->
             <div class="row">
-                <div class="col-md-8 dataBox graph">
-                    <h2>Time Estimation:</h2>
-                    <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
+                <div class="col-sm-3 dataBox">
+                    <p>Start Date:</p>
+                    <hr>
+                    <h2>{{ project.creation_time.split(",")[0] }}</h2>
+                </div>                         
+                <div class="col-sm-3 dataBox">
+                    <p>STATUS:</p>
+                    <hr>
+                    <h2>Completed</h2>
+                </div>                             
+                <div class="col-sm-3 dataBox">
+                    <p>skills you're tracking:</p>
+                    <hr>
+                    <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
                 </div>
             </div>
-            
-            <!-- Donut Graph of Skills -->
+
             <div class="row">
-                <div class="col-md-4 dataBox graph">
-                    <h2>Skills Breakdown:</h2>
-                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
+                <div class="col-sm-3 dataBox">
+                    <p>Finish Date:</p>
+                    <hr>
+                    <h2>{{ project.completion_time.split(",")[0] }}</h2>
+                </div>                         
+                <div class="col-sm-3 dataBox">
+                    <p>empty:</p>
+                    <hr>
+                    <h2>empty</h2>
+                </div>                             
+                <div class="col-sm-3 dataBox">
+                    <p>empty</p>
+                    <hr>
+                    <p>empty</p>
                 </div>
             </div>
 

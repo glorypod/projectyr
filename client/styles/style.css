@@ -207,3 +207,31 @@ div form button {
 .navbar-inverse .dropdown-menu {
   color: #fff;
 }
+
+
+.dataBox {
+  border: 1px solid grey;
+  margin: 5px;
+}
+
+.dataBox hr {
+  padding: 0px;
+  margin: 10px;
+}
+
+.dataBox p {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.dataBox h6 {
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 5px;
+}
+
+.graph {
+  border: none;
+}
