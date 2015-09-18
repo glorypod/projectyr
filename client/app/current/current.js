@@ -2,7 +2,7 @@
   angular.module('projectyr.current', [])
   .controller('CurrentController', CurrentController);
 
-  function CurrentController ($scope, $rootScope, $interval, Project, Auth, Visual, $location) {
+  function CurrentController ($scope, $rootScope, $interval, Project, Auth, Visual, $location, $window) {
     /* set up page */
     $rootScope.initIndex();
     
