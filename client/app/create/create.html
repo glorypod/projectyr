@@ -1,59 +1,63 @@
-<!-- main create form  -->
-<div class="container createForm">
-  <div class="create">
-    <!-- title -->
-    <div class="form-group">
-      <h3>Create New Project</h3>
-      <form name="createForm" role="form">
-
-        <!-- projectname -->
-        <div class="form-group">
-          <label>Project Name</label>
-          <input name="name" type="text"  class="form-control input-sm" placeholder="Project name" ng-model="project.name" required/>
-          <p ng-show="createForm.name.$error.required && createForm.name.$dirty" class="help-block">Project name is required.</p>
-        </div>
-
-        <!-- estimatedtime -->
-        <div class="form-group" >
-         <label>Estimated Time (hrs)</label>
-          <input name="time" type="text"  class="form-control" placeholder="Ex:12.5" ng-model="project.estTime" required/>
-          <p ng-show="createForm.time.$error.required && createForm.time.$dirty" class="help-block">Project estimated time is required.</p>
-        </div>
-
-        <!-- requiredskills -->
-        <label>Required Skills: </label> <br>
-        <div class="options">
-          <select name="skill" ng-model="project.skill1" required>
-                     <option ng-repeat="option in skills"> {{option}}</option>
-          </select>
-        </div>
-        <div class="options" ng-show='project.skill1'>
-          <select name="skill" ng-model="project.skill2">
-                     <option ng-repeat="option in skills"> {{option}}</option>
-          </select>
-           </div>
-        <div class="options" ng-show='project.skill2'>
-          <select name="skill" ng-model="project.skill3">
-                     <option ng-repeat="option in skills"> {{option}}</option>
-          </select>
-          </div>
-        <div class="options" ng-show='project.skill3'>
-          <select name="skill" ng-model="project.skill4">
-                     <option ng-repeat="option in skills"> {{option}}</option>
-          </select>
-          </div>
-        <div class="options" ng-show='project.skill4'>
-          <select name="skill" ng-model="project.skill5">
-                     <option ng-repeat="option in skills"> {{option}}</option>
-          </select>
-          </div>
-          <p ng-show="createForm.skill.$error.required && createForm.skill.$dirty" class="help-block">At least one skill is required.</p>
-
-        <!-- submmit button and error term -->
-        <p class="error" ng-if="project.err">{{ project.err }}</p>
-        <br>
-        <button class="btn btn-success" ng-click="create()" ng-disabled="createForm.$invalid">Submit</button>
-      </form>
+<div class="container signform">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="img">
+        <img src="http://images.sodahead.com/profiles/0/0/2/0/1/0/6/6/1/Tyr-the-god-45002285715.jpeg" alt="God Tyr slaying wolf">
+      </div>
     </div>
-  </div>
+     <div class="col-md-6">
+      <div class="form-login">
+        <h3>Create New Project</h3>
+        <form class=""name="createForm" role="form">
+          <!-- projectname -->
+          <div class="form-group">
+            <label>Project Name</label>
+            <input name="name" type="text"  class="form-control input-sm" placeholder="Project name" ng-model="project.name" required/>
+            <p ng-show="createForm.name.$error.required && createForm.name.$dirty" class="help-block">Project name is required.</p>
+          </div>
+
+          <!-- estimatedtime -->
+          <div class="form-group" >
+           <label>Estimated Time (hrs)</label>
+            <input name="time" type="text"  class="form-control" placeholder="Ex:12.5" ng-model="project.estTime" required/>
+            <p ng-show="createForm.time.$error.required && createForm.time.$dirty" class="help-block">Project estimated time is required.</p>
+          </div>
+
+          <!-- requiredskills -->
+          <label>Required Skills: </label> <br>
+          <div class="options">
+            <select name="skill" ng-model="project.skill1" required>
+                       <option class="options" ng-repeat="option in skills"> {{option}}</option>
+            </select>
+          </div>
+          <div class="options" ng-show='project.skill1'>
+            <select name="skill" ng-model="project.skill2">
+                       <option ng-repeat="option in skills"> {{option}}</option>
+            </select>
+             </div>
+          <div class="options" ng-show='project.skill2'>
+            <select name="skill" ng-model="project.skill3">
+                       <option class="options" ng-repeat="option in skills"> {{option}}</option>
+            </select>
+            </div>
+          <div class="options" ng-show='project.skill3'>
+            <select name="skill" ng-model="project.skill4">
+                       <option class="options" ng-repeat="option in skills"> {{option}}</option>
+            </select>
+            </div>
+          <div class="options" ng-show='project.skill4'>
+            <select name="skill" ng-model="project.skill5">
+                       <option class="options" ng-repeat="option in skills"> {{option}}</option>
+            </select>
+            </div>
+            <p ng-show="createForm.skill.$error.required && createForm.skill.$dirty" class="help-block">At least one skill is required.</p>
+
+          <!-- submmit button and error term -->
+          <p class="error" ng-if="project.err">{{ project.err }}</p>
+          <br>
+          <button class="btn btn-success" ng-click="create()" ng-disabled="createForm.$invalid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div><!-- row -->
 </div>
