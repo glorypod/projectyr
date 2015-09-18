@@ -21,14 +21,14 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="#/" class="navbar-brand">ProjecTyr</a></li>
             <li class="dropdown" ng-controller="IndexController">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ng-repeat="project in projects"><a href="#/current" ng-click="setProject(project)">{{project.project_name}}</a></li>
+                <li ng-repeat="project in projects | orderBy:'-'"><a href="#/current" ng-click="setProject(project)">{{project.project_name}}</a></li>
               </ul>
             </li>
             <li><a href="#/create">Create Project</a></li>
             <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#/open">open projects</a></li>
                 <li><a href="#/closed">archived projects</a></li>
