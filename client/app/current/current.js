@@ -95,6 +95,13 @@
           $rootScope.init();
         })
     };
+
+    $scope.completeProject = function(project){
+      Project.completeProject(project)
+        .then(function(data){
+          $rootScope.init();
+        })  
+    }
   
   };
 
