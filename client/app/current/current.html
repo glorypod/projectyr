@@ -31,8 +31,8 @@
           </timer>
         </div>
         <div class="timer-controls">
-          <button id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
-          <button id="pause" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
+          <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
+          <button ng-if="running" id="pause" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
           <button id="reset" class="btn btn-danger" ng-click="reset()"><i class="fa fa-stop"></i></button>
           <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()">Add to Time Spent</button>
         </div>
