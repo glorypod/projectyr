@@ -28,38 +28,42 @@
         <!-- Dashboard Visuals (right) -->
         <div class="col-md-8">
             <h2>{{ project.project_name }}</h2>
+            
             <div class="row">
-                <div class="col-md-3 dataBox">
-                    <p>ESTIMATED</p>
+            <!-- Time Estimation Bar Graph -->
+                <div class="col-sm-5 dataBox graph">
+                    <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL TIME</strong></p>
+                    <hr>
+                    <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
+                </div>
+            <!-- Donut Graph of Skills -->
+                <div class="col-md-5 dataBox graph">
+                    <p><strong>SKILLS BREAKDOWN</strong></p>
+                    <hr>
+                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
+                </div>
+            
+            </div>
+            <div class="row">
+                <div class="col-sm-3 dataBox">
+                    <p>ESTIMATED:</p>
                     <hr>
                     <h2>{{ project.est_time | number:0 }} hrs</h2>
                 </div>
-                <div class="col-md-3 dataBox">
-                    <p>ACTUAL</p>
+                            
+                <div class="col-sm-3 dataBox">
+                    <p>ACTUAL:</p>
                     <hr>
                     <h2>{{ project.act_time | number:0 }} hrs</h2>
                 </div>
-                <div class="col-md-3 dataBox">
-                    <p>DIFFERENCE</p>
+                              
+                <div class="col-sm-3 dataBox">
+                    <p>DIFFERENCE:</p>
                     <hr>
                     <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
                 </div>
-            </div>
 
-            <!-- Time Estimation Bar Graph -->
-            <div class="row">
-                <div class="col-md-8 dataBox">
-                    <h2>Time Estimation:</h2>
-                    <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
-                </div>
-            </div>
             
-            <!-- Donut Graph of Skills -->
-            <div class="row">
-                <div class="col-md-4 dataBox">
-                    <h2>Skills Breakdown:</h2>
-                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
-                </div>
             </div>
 
         </div>
