@@ -4,13 +4,15 @@
 
   function CurrentController ($scope, $rootScope, $interval, Project, Auth, $location) {
     /* set up page */
+    $rootScope.initIndex();
+    
     $rootScope.init = function ()  {
       Project.getOpen()
         .then(function(all) {
           $scope.projects = all.projects;
           $scope.running = false;
           $scope.timeToAdd = 0;
-          $scope.currentProject = $rootScope.project || $scope.projects[0];
+          $scope.currentProject = $rootScope.project || $scope.projects[$scope.projects.length-1];
           $scope.running = false;
           $scope.started = false;
         });
