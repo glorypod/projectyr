@@ -9,7 +9,7 @@
 </head>
 <body ng-app="projectyr">
   <!-- Navbar -->
-  <nav class="navbar navbar-inverse navbar-static-top" style="margin:0">
+  <nav class="navbar navbar-inverse navbar-static-top" style="margin:0" ng-controller="IndexController">
     <div class="container-fluid">
       <div class="navbar-header">
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -20,15 +20,15 @@
         <div>
           <ul class="nav navbar-nav navbar-left">
             <li><a href="#/" class="navbar-brand">ProjecTyr</a></li>
-            <li class="dropdown" ng-controller="IndexController">
-              <a data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
+            <li class="dropdown">
+              <a ng-if="authed" data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ng-repeat="project in projects | orderBy:'-'"><a href="#/current" ng-click="setProject(project)">{{project.project_name}}</a></li>
               </ul>
             </li>
-            <li><a href="#/create">Create Project</a></li>
+            <li><a ng-if="authed" href="#/create">Create Project</a></li>
             <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
+              <a ng-if="authed" data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#/open">open projects</a></li>
                 <li><a href="#/closed">archived projects</a></li>
@@ -39,9 +39,9 @@
       </div>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#/signin"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
-          <li><a href="#/signout"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+          <li><a ng-if="!authed" href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a ng-if="!authed" href="#/signin"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+          <li><a ng-if="authed" href="#/signout"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
         </ul>
       </div>
     </div>
