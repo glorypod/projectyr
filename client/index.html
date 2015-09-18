@@ -19,19 +19,19 @@
         </button>
         <div>
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#/" class="navbar-brand">ProjecTyr</a></li>
+            <li><a href="#/" class="navbar-brand">projecTYR</a></li>
+            <li><a ng-if="authed" href="#/create">Create Project</a></li>
             <li class="dropdown">
               <a ng-if="authed" data-toggle="dropdown" class="dropdown-toggle">Track Time <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li ng-repeat="project in projects | orderBy:'-'"><a href="#/current" ng-click="setProject(project)">{{project.project_name}}</a></li>
               </ul>
             </li>
-            <li><a ng-if="authed" href="#/create">Create Project</a></li>
             <li class="dropdown">
               <a ng-if="authed" data-toggle="dropdown" class="dropdown-toggle">Project Stats <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#/open">open projects</a></li>
-                <li><a href="#/closed">archived projects</a></li>
+                <li><a href="#/open">Open Projects</a></li>
+                <li><a href="#/closed">Closed Projects</a></li>
               </ul>
             </li>
           </ul>
