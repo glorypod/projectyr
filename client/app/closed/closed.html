@@ -50,7 +50,18 @@
 
       <h2>{{ project.project_name }}</h2>
 
-      <h3><small>Here's your dashboard for {{ project.project_name }}</small></h3>
+      <h3><small>Here's your dashboard for "{{ project.project_name }}
+      "</small></h3>
+
+      <div class="row">
+        <div class="col-sm-12 dataBox graph lineGraph">
+          <p><strong>Overall Time Estimates vs. Actual</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="lineData" chart-options=
+          "lineOptions" style="width: 100%; height: 100%;" tc-chartjs-line=
+          ""></canvas>
+        </div>
+      </div>
 
       <div class="row">
         <!-- Time Estimation Bar Graph -->
@@ -101,60 +112,40 @@
       </div><!-- start of additional  -->
 
       <div class="row">
-        <div class="col-sm-3 dataBox">
+        <div class="col-sm-5 dataBox">
           <!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> -->
 
-          <p>Start Date:</p>
+          <p>Date Completed:</p>
           <hr>
 
-          <h2>{{ project.creation_time.split(",")[0] }}</h2>
+          <h2>{{ project.completion_time.split(",")[0] }}</h2>
         </div>
 
-        <div class="col-sm-3 dataBox">
+        <div class="col-sm-5 dataBox">
           <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
 
           <p>STATUS:</p>
           <hr>
 
           <h2>Complete!</h2>
-        </div>
+        </div><!--       <div class="col-sm-3 dataBox">
+        <p>skills you're tracking:</p>
+        <hr>
 
-        <div class="col-sm-3 dataBox">
-          <!-- <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> -->
-
-          <p>skills you're tracking:</p>
-          <hr>
-
-          <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
-        </div>
+        <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
+      </div> -->
       </div>
 
       <div class="row">
-        <div class="col-sm-3 dataBox">
+        <div class="col-sm-2 dataBox" ng-repeat="skill in project.skills">
           <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
 
-          <p>Finish Date:</p>
+          <p>{{skill}}</p>
           <hr>
 
-          <h2>{{ project.completion_time.split(",")[0] }}</h2>
-        </div>
+          <h2><strong>{{ project[skill] | number:0 }}</strong></h2>
 
-        <div class="col-sm-3 dataBox">
-          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-
-          <p>empty:</p>
-          <hr>
-
-          <h2>empty</h2>
-        </div>
-
-        <div class="col-sm-3 dataBox">
-          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-
-          <p>empty</p>
-          <hr>
-
-          <p>empty</p>
+          <h6>HOURS</h6>
         </div>
       </div>
     </div>

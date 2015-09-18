@@ -23,12 +23,17 @@
 
       project.createDonutData = (function() {
         var donutData = [];
-        var colors = ['#F7464A', '#3366FF', '#CCFF33', '#3399FF', '#FF9933'];
-        var highlights = ['#FF5A5E', '#99B2FF', '#E6FF99', '#70B8FF', '#FFC285'];
+        var colors = ['#F7464A', '#3366FF', '#CCFF33', '#3399FF',
+          '#FF9933'
+        ];
+        var highlights = ['#FF5A5E', '#99B2FF', '#E6FF99', '#70B8FF',
+          '#FFC285'
+        ];
 
         for (var i = 0; i < skills.length; i++) {
           var data = {
-            value: Math.round(project[skills[i]] / project.act_time * 100),
+            value: Math.round(project[skills[i]] / project.act_time *
+              100),
             color: colors[i],
             highlight: highlights[i],
             label: skills[i]
@@ -49,7 +54,8 @@
             highlightStroke: '#99B2FF',
             data: [project.est_time]
           }, {
-            label: 'actual: ' + Math.round(project.act_time) + 'hrs',
+            label: 'actual: ' + Math.round(project.act_time) +
+              'hrs',
             fillColor: '#CCFF33',
             strokeColor: '#CCFF33',
             highlightFill: '#E6FF99',
@@ -61,6 +67,7 @@
 
       return project;
     }
+
 
     var setSelectedProject = function(selected) {
       project = makeProject(selected);
@@ -94,11 +101,32 @@
       legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
     };
 
+    var lineOptions = {
+      responsive: true,
+      scaleShowGridLines: true,
+      scaleGridLineColor: "rgba(0,0,0,.05)",
+      scaleGridLineWidth: 1,
+      scaleBeginAtZero: true,
+      bezierCurve: true,
+      bezierCurveTension: 0.4,
+      pointDot: true,
+      pointDotRadius: 4,
+      pointDotStrokeWidth: 1,
+      pointHitDetectionRadius: 20,
+      datasetStroke: true,
+      datasetStrokeWidth: 2,
+      datasetFill: true,
+      onAnimationProgress: function(){},
+      onAnimationComplete: function(){},
+      legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    };
+
     return {
       makeProject: makeProject,
       setSelectedProject: setSelectedProject,
       options: options,
-      barOptions: barOptions
+      barOptions: barOptions,
+      lineOptions: lineOptions
     };
 
   }
