@@ -37,9 +37,34 @@
             <td>
               <a ng-click="setSelectedProject(project)">get details</a>
             </td>
+
+            <td>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck" ng-click="closeProject(project)">Close</button>
+            </td>
           </tr>
         </tbody>
       </table>
+
+      <div id="submitCheck" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Submit Check</h4>
+          </div>
+          
+          <div class="modal-body">
+            Are you sure this project is complete?
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="completeProject(toClose)">Yes</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+          </div>
+          </div>
+        </div>
+    </div>
     </div><!-- Dashboard Visuals (right) -->
 
     <div class="col-md-7">
@@ -139,4 +164,5 @@
       </div>
     </div>
   </div>
+
 </div>
