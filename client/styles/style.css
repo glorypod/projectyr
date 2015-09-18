@@ -78,17 +78,22 @@ main {
 .timer-meta .full {
   width: 100%;
 }
+.timer-meta .full.bottom{
+  margin-top: 5%;
+}
 .timer-meta h1{
-  font-size: 1.5em;
-  border-bottom: 1px solid #FF9933;
-  margin: 0 auto;
+  color: #5cb85c;
+  font-size: 1.75em;
+  /*border-bottom: 1px solid #FF9933;*/
+  margin: 0 auto 1% auto;
   width: 40%;
 }
 .timer-meta h2{
-  font-size: 1.25em;
-  border-bottom: 1px solid #99CCFF;
-  margin: 0 auto;
-  width: 40%;
+  color: #337ab7;
+  font-size: 1.50em;
+  /*border-bottom: 1px solid #99CCFF;*/
+  margin: 0 auto 1% auto;
+  width: 60%;
 }
 .timer-meta .half {
   display: inline-block;
@@ -96,9 +101,12 @@ main {
 }
 .timer {
   text-align: center;
-  font-size: 2em;
 }
-
+.timer-display h1 {
+  font-size: 1.75em;
+  color: #9d9d9d;
+  margin-bottom: 5%;
+}
 .timer .clock {
   font-size: 2em;
   font-family: Digital;
@@ -108,15 +116,16 @@ main {
   margin: 1% auto;
   padding: 1% 2%;
 }
-
 .timer .btn {
   display: block;
   width: 35%;
   margin: 1% auto;
 }
-
 .timer-display {
   width: 100%;
+}
+.project-time-options {
+  margin-top: 10%;
 }
 
 /********** Login **********/
@@ -131,16 +140,13 @@ main {
     border-width: 5px;
     box-shadow:0 1px 0 #cfcfcf;
 }
-
 .form-login input,
 .form-login .wrapper a {
     font-size: 16px;  
 }
-
 .form-login .wrapper span button {
     font-weight: bold;
 }
-
 h3 { 
  border:0 solid #fff; 
  border-bottom-width:1px;
@@ -148,20 +154,16 @@ h3 {
  text-align: center;
  font-weight: bold;
 }
-
 .form-control {
     border-radius: 16px;
 }
-
 .wrapper {
     text-align: center;
 }
-
 .social-box{
   margin: 0 auto;
   padding: 20px;
 }
-
 .social-box a{
   font-weight:bold;
   font-size:16px;
