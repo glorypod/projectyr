@@ -23,15 +23,15 @@
 
       project.createDonutData = (function() {
         var donutData = [];
-        var colors = ['#F7464A', '#46BFBD', '#FDB45C', '#3399FF', '#FF9933'];
-        var highlights = ['#FF5A5E', '#5AD3D1', '#FFC870', '#70B8FF', '#FFC285'];
+        var colors = ['#F7464A', '#3366FF', '#CCFF33', '#3399FF', '#FF9933'];
+        var highlights = ['#FF5A5E', '#99B2FF', '#E6FF99', '#70B8FF', '#FFC285'];
 
         for (var i = 0; i < skills.length; i++) {
           var data = {
             value: Math.round(project[skills[i]] / project.act_time * 100),
             color: colors[i],
             highlight: highlights[i],
-            label: skills[i] + ': ' + Math.round(project[skills[i]] / project.act_time * 100) + '%'
+            label: skills[i]
           }
           donutData.push(data);
         }
@@ -42,14 +42,14 @@
         return barData = {
           labels: ['times'],
           datasets: [{
-            label: 'estimated time: ' + project.est_time + 'hrs',
+            label: 'estimate: ' + project.est_time + 'hrs',
             fillColor: '#3366FF',
             strokeColor: '#3366FF',
             highlightFill: '#99B2FF',
             highlightStroke: '#99B2FF',
             data: [project.est_time]
           }, {
-            label: 'actual time: ' + Math.round(project.act_time) + 'hrs',
+            label: 'actual: ' + Math.round(project.act_time) + 'hrs',
             fillColor: '#CCFF33',
             strokeColor: '#CCFF33',
             highlightFill: '#E6FF99',

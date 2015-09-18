@@ -31,16 +31,16 @@
             
             <div class="row">
             <!-- Time Estimation Bar Graph -->
-                <div class="col-sm-5 dataBox graph">
+                <div class="col-sm-6 dataBox bar graph">
                     <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL TIME</strong></p>
                     <hr>
-                    <canvas tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
+                    <canvas class="bar" tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
                 </div>
             <!-- Donut Graph of Skills -->
                 <div class="col-md-5 dataBox graph">
                     <p><strong>SKILLS BREAKDOWN</strong></p>
                     <hr>
-                    <canvas tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
+                    <canvas class="donut" tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
                 </div>
             
             </div>
@@ -49,21 +49,36 @@
                     <p>ESTIMATED:</p>
                     <hr>
                     <h2>{{ project.est_time | number:0 }} hrs</h2>
-                </div>
-                            
+                </div>                         
                 <div class="col-sm-3 dataBox">
                     <p>ACTUAL:</p>
                     <hr>
                     <h2>{{ project.act_time | number:0 }} hrs</h2>
-                </div>
-                              
+                </div>                             
                 <div class="col-sm-3 dataBox">
                     <p>DIFFERENCE:</p>
                     <hr>
                     <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
                 </div>
+            </div>
 
-            
+             <!-- start of additional  -->
+            <div class="row">
+                <div class="col-sm-3 dataBox">
+                    <p>Start Date:</p>
+                    <hr>
+                    <h2>{{ project.creation_time.split(",")[0] }}</h2>
+                </div>                         
+                <div class="col-sm-3 dataBox">
+                    <p>STATUS:</p>
+                    <hr>
+                    <h2>In Progress</h2>
+                </div>                             
+                <div class="col-sm-3 dataBox">
+                    <p>skills you're tracking:</p>
+                    <hr>
+                    <p ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></p>
+                </div>
             </div>
 
         </div>

@@ -16,6 +16,7 @@
         .then(function(data) {
           $scope.projects = data.projects;
           $scope.project = Visual.makeProject($scope.projects[0]);
+          console.log($scope.project, 'the project');
           $scope.setSelectedProject($scope.project);
         })
     }
