@@ -11,7 +11,7 @@
         <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
         <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
         <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs() && !running">End</button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#submitCheck" ng-click="setProject(project)">Complete</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#submitCheck">Complete</button>
       </div>
       <div>
         <div>
