@@ -1,119 +1,159 @@
-<div class="container" ng-controller="ClosedController" data-ng-init="init()">
-    <h4>PROJECT STATS</h4>
-      <ul class="nav nav-tabs">
-        <li><a href="#/open">Open Projects</a></li>
-        <li class="active"><a href="#/closed">Closed Projects</a></li>
-    </ul>
+<div class="container" data-ng-init="init()" ng-controller="ClosedController">
+  <h4>PROJECT STATS</h4>
+
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="#/open">Open Projects</a>
+    </li>
+
+    <li class="active">
+      <a href="#/closed">Closed Projects</a>
+    </li>
+  </ul>
+
   <h2>Closed Projects</h2>
-    <hr>
-    
-     <!-- Table of Projects (left) -->
-    <div class="row">
-        <div class="col-md-5">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Date Completed</th>
-                        <th>Project Title</th>
-                        <th></th>
-                    </tr>
-                </thead>
+  <hr>
+  <!-- Table of Projects (left) -->
 
-                <tbody>
-                    <tr ng-repeat="project in projects">
-                        <td>{{ project.creation_time.split(",")[0] }}</td>
-                        <td>{{ project.project_name }}</td>
-                        <td><a ng-click="setSelectedProject(project)">get details</a></td>
-                    </tr>
-                </tbody>
-            </table>
+  <div class="row">
+    <div class="col-md-5">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Date Completed</th>
+
+            <th>Project Title</th>
+
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="project in projects">
+            <td>{{ project.creation_time.split(",")[0] }}</td>
+
+            <td>{{ project.project_name }}</td>
+
+            <td>
+              <a ng-click="setSelectedProject(project)">get details</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- Dashboard Visuals (right) -->
+
+    <div class="col-md-7">
+      <!-- <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> -->
+
+      <h2>{{ project.project_name }}</h2>
+
+      <h3><small>Here's your dashboard for {{ project.project_name }}</small></h3>
+
+      <div class="row">
+        <!-- Time Estimation Bar Graph -->
+
+        <div class="col-sm-6 dataBox bar graph">
+          <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL
+          TIME</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="barData" chart-options=
+          "barOptions" class="bar" tc-chartjs-bar=""></canvas>
+        </div><!-- Donut Graph of Skills -->
+
+        <div class="col-md-5 dataBox graph">
+          <p><strong>SKILLS BREAKDOWN</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="donutData" chart-options="options"
+          class="donut" tc-chartjs-doughnut=""></canvas>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
+
+          <p>ESTIMATED:</p>
+          <hr>
+
+          <h2>{{ project.est_time | number:0 }} hrs</h2>
         </div>
 
-        <!-- Dashboard Visuals (right) -->
-        <div class="col-md-7">
-            <!-- <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> -->
-            <h2>{{ project.project_name }}</h2>
-            <h3><small>Here's your dashboard for {{ project.project_name }}</small></h3>
-            
-            <div class="row">
-            <!-- Time Estimation Bar Graph -->
-                <div class="col-sm-6 dataBox bar graph">
-                    <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL TIME</strong></p>
-                    <hr>
-                    <canvas class="bar" tc-chartjs-bar chart-options="barOptions" chart-data="barData" auto-legend></canvas>
-                </div>
-            <!-- Donut Graph of Skills -->
-                <div class="col-md-5 dataBox graph">
-                    <p><strong>SKILLS BREAKDOWN</strong></p>
-                    <hr>
-                    <canvas class="donut" tc-chartjs-doughnut chart-options="options" chart-data="donutData" auto-legend></canvas>
-                </div>
-            
-            </div>
-            <div class="row">
-                <div class="col-sm-3 dataBox">
-                    <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>ESTIMATED:</p>
-                    <hr>
-                    <h2>{{ project.est_time | number:0 }} hrs</h2>
-                </div>                         
-                <div class="col-sm-3 dataBox">
-                    <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>ACTUAL:</p>
-                    <hr>
-                    <h2>{{ project.act_time | number:0 }} hrs</h2>
-                </div>                             
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>DIFFERENCE:</p>
-                    <hr>
-                    <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
-                </div>
-            </div>
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
 
-             <!-- start of additional  -->
-            <div class="row">
-                <div class="col-sm-3 dataBox">
-                    <!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> -->
-                    <p>Start Date:</p>
-                    <hr>
-                    <h2>{{ project.creation_time.split(",")[0] }}</h2>
-                </div>                         
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
-                    <p>STATUS:</p>
-                    <hr>
-                    <h2>Complete!</h2>
-                </div>                             
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> -->
-                    <p>skills you're tracking:</p>
-                    <hr>
-                    <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
-                </div>
-            </div>
+          <p>ACTUAL:</p>
+          <hr>
 
-            <div class="row">
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>Finish Date:</p>
-                    <hr>
-                    <h2>{{ project.completion_time.split(",")[0] }}</h2>
-                </div>                         
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>empty:</p>
-                    <hr>
-                    <h2>empty</h2>
-                </div>                             
-                <div class="col-sm-3 dataBox">
-                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
-                    <p>empty</p>
-                    <hr>
-                    <p>empty</p>
-                </div>
-            </div>
-
+          <h2>{{ project.act_time | number:0 }} hrs</h2>
         </div>
+
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
+
+          <p>DIFFERENCE:</p>
+          <hr>
+
+          <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
+        </div>
+      </div><!-- start of additional  -->
+
+      <div class="row">
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> -->
+
+          <p>Start Date:</p>
+          <hr>
+
+          <h2>{{ project.creation_time.split(",")[0] }}</h2>
+        </div>
+
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
+
+          <p>STATUS:</p>
+          <hr>
+
+          <h2>Complete!</h2>
+        </div>
+
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> -->
+
+          <p>skills you're tracking:</p>
+          <hr>
+
+          <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
+
+          <p>Finish Date:</p>
+          <hr>
+
+          <h2>{{ project.completion_time.split(",")[0] }}</h2>
+        </div>
+
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
+
+          <p>empty:</p>
+          <hr>
+
+          <h2>empty</h2>
+        </div>
+
+        <div class="col-sm-3 dataBox">
+          <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
+
+          <p>empty</p>
+          <hr>
+
+          <p>empty</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
