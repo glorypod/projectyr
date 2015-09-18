@@ -76,6 +76,7 @@
       totalElapsedMs = elapsedMs = 0;
       $scope.$broadcast('timer-reset');
     }
+    
     $scope.addTime = function(){
       //$scope.actTime += Number(timeToAdd);
       totalElapsedMs += $scope.timeToAdd * 60 * 60 * 1000;
@@ -89,7 +90,6 @@
         if($scope.timeToAdd < 0.01){
           $scope.timeToAdd = 0.01;
         }
-        $scope.currentProject.act_time += $scope.timeToAdd;
       }
       totalElapsedMs = elapsedMs = 0;
       $scope.$broadcast('timer-reset');
@@ -104,6 +104,7 @@
     };
 
     $scope.timeAssign = function () {
+      totalElapsedMs = elapsedMs = 0;
       Project.timeAssign($scope.currentProject)
         .then(function(data){
           $rootScope.init();
