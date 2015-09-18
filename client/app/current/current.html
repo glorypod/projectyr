@@ -14,7 +14,7 @@
           </div>
           <div class="meta-block">
             <h2>Time Spent</h2>
-            <div>{{ currentProject.act_time }} hours</div>
+            <div>{{ currentProject.act_time | number:0 }} hours</div>
           </div>
         </div>
         <div class="manage-controls">
@@ -42,23 +42,30 @@
           <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
       </div>
     </div>
+
+
     <div class="analytics col-md-4">
       <h1>Project Analytics</h1>     
-       <div class="dataBox bar graph">
-          <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL
-          TIME</strong></p>
-          <hr>
-          <canvas auto-legend="" chart-data="barData" chart-options=
+
+        <div class="col-md-10 bar graph panel panel-warning">
+          <div class="panel-heading text-center"><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL
+          TIME</strong></div>
+          <div class="panel-body text-center"><canvas auto-legend="" chart-data="barData" chart-options=
           "barOptions" class="bar" tc-chartjs-bar=""></canvas>
-        </div><!-- Donut Graph of Skills -->
-        <div class="dataBox graph">
-          <p><strong>SKILLS BREAKDOWN</strong></p>
-          <hr>
-          <canvas auto-legend="" chart-data="donutData" chart-options="options"
-          class="donut" tc-chartjs-doughnut=""></canvas>
+        </div>
+      </div>
+      <hr>
+        <!-- Donut Graph of Skills -->
+        <div class=" col-md-10 graph panel panel-warning">
+          <div class="panel-heading text-center"><strong>SKILLS BREAKDOWN</strong></div>
+          <div class="panel-body text-center"><canvas auto-legend="" chart-data="donutData" chart-options="options"
+          class="donut" tc-chartjs-doughnut=""></canvas></div>
         </div>
     </div>
-  </div><!-- row -->
+
+
+
+  <!-- row -->
 </main>
 
 <!-- Modal: pop up window for adding time manually -->
