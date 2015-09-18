@@ -87,7 +87,6 @@ main {
 .timer-meta h2{
   color: #449d44;
   font-size: 1.50em;
-  /*border-bottom: 1px solid #99CCFF;*/
   margin: 0 auto 1% auto;
   width: 60%;
 }
@@ -129,6 +128,10 @@ main {
  }
 .project-time-options .content, .timer .content {
   margin-top: 15%;
+}
+.analytics .dataBox {
+  margin: 0 auto;
+  width: 80%;
 }
 /********** Login **********/
 .form-login {
