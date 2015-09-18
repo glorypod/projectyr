@@ -28,6 +28,10 @@ h4 {
   /*color: steelblue;*/
 }
 
+.tyr {
+  font-family: Norse;
+}
+
 #myModal div select {
   margin-bottom: 20px;
   background-color: lightgrey;
@@ -66,10 +70,6 @@ blockquote {
 
 #copyright {
   text-align: center;
-}
-
-.tyr-form {
-  height: 40%;
 }
 
 /********** Current **********/
@@ -141,12 +141,10 @@ h1.second {
   margin-top: 10%;
 }
 /********** Login **********/
-.form-login {
+.form-login, .createForm {
     background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 10%;
+    margin: 10% auto 0 auto;
     border-radius: 16px;
     border-color:#d2d2d2;
     border-width: 5px;
@@ -154,7 +152,7 @@ h1.second {
 }
 .form-login input,
 .form-login .wrapper a {
-    font-size: 16px;  
+    font-size: 1.1em;  
 }
 .form-login .wrapper span button {
     font-weight: bold;
@@ -165,9 +163,6 @@ h3 {
  padding-bottom:20px;
  text-align: center;
  font-weight: bold;
-}
-.form-control {
-    border-radius: 16px;
 }
 .wrapper {
     text-align: center;
@@ -202,35 +197,29 @@ p.help-block {
 }
 
 div.signform {
-    padding-top: 40px;
-    position: fixed;
-    left: 180;
-    right: 200;
-    text-align: center;
+  padding-top: 40px;
+  left: 180;
+  right: 180;
+  text-align: center;
+}
+.createForm input, .options select {
+  width: 30%;
+  margin: 1% auto;
 }
 
+/*
 div.createForm {
   text-align: center;
   width: 500px;
   border: 1px solid grey;
   background-color: lightgray;
   border-radius: 28px;
-}
-
+}*/
+/*
 div.create form {
   text-align:left;
   padding-left: 150px;
-}
-
-div.options select{
-  width: 150px;
-  height: 30px;
-  margin: 5px;
-}
-
-div.createForm form input {
-  width: 200px;
-}
+}*/
 
 div form button {
   text-align:center;
