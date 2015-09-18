@@ -23,7 +23,7 @@
         <!-- requiredskills -->
         <label>Required Skills: </label> <br>
         <div class="options">
-          <select name="skill" ng-model="project.skill1">
+          <select name="skill" ng-model="project.skill1" required>
                      <option ng-repeat="option in skills"> {{option}}</option>
           </select>
         </div>
