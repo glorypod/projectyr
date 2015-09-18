@@ -66,12 +66,29 @@
       })
     };
 
+    function reopenProject (project) {
+      console.log(project)
+      console.log("inside the factory")
+      return $http({
+        method: 'POST',
+        url: '/projects/reopen',
+        data: project
+      })
+      .then(function(resp){
+        return resp.data;
+      })
+      .catch(function(err){
+        console.log("reopenProject Error: ", err)
+      })
+    };
+
     return {
       create: create,
       getOpen:getOpen,
       getClosed:getClosed,
       timeAssign: timeAssign,
-      completeProject: completeProject
+      completeProject: completeProject,
+      reopenProject: reopenProject
     }
   };
 
