@@ -2,7 +2,7 @@
   angular.module('projectyr.closed', ['tc.chartjs'])
   .controller('ClosedController', ClosedController)
   
-  function ClosedController($scope, $location, Auth, Project, Visual) {
+  function ClosedController($scope, $rootScope, $location, Auth, Project, Visual) {
     $scope.options = Visual.options; 
     $scope.barOptions = Visual.barOptions; 
 
@@ -67,6 +67,7 @@
       Project.reopenProject(selected)
         .then(function(data){
           $scope.init();
+          $rootScope.initIndex();
         })
    }; 
   }

@@ -2,7 +2,7 @@
   angular.module('projectyr.open', ['tc.chartjs'])
     .controller('OpenController', OpenController);
 
-  function OpenController($scope, $location, Auth, Project, Visual) {
+  function OpenController($scope, $rootScope, $location, Auth, Project, Visual) {
     $scope.options = Visual.options; 
     $scope.barOptions = Visual.barOptions; 
 
@@ -31,11 +31,12 @@
       Project.completeProject($scope.toClose)
         .then(function(data){
           $scope.init();
+          $rootScope.initIndex();
         })  
     }
 
     $scope.closeProject = function(project){
-      $scope.toClose = project
+      $scope.toClose = project;
     } 
     
   }
