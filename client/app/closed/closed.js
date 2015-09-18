@@ -27,6 +27,13 @@
       $scope.barData = $scope.project.createBarData;
     }
 
+   $scope.reopenProject = function (selected){
+      Project.reopenProject(selected)
+        .then(function(data){
+          $scope.init();
+        })
+   } 
+   
   }
 })();
 
