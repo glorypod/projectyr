@@ -1,25 +1,32 @@
 <main>
   <div class="row">
-    <div ng-show="currentProject" class="col-md-6 container">
-      <div class="timer-meta">
-        <div class="full">
-          <h1>Project Name</h1>
-          <div>{{ currentProject.project_name }}</div>
-        </div>
-        <div class="full bottom">
-          <div class="half">
+    <div class="col-md-4 project-time-options">
+      <h1>Manage Project</h1>
+      <div class="content">
+        <div class="timer-meta">
+          <div class="meta-block">
+            <h2>Project Name</h2>
+            <div>{{ currentProject.project_name }}</div>
+          </div>
+          <div class="meta-block">
             <h2>Time Estimate</h2>
             <div>{{ currentProject.est_time }} hours</div>
           </div>
-          <div class="half">
+          <div class="meta-block">
             <h2>Time Spent</h2>
             <div>{{ currentProject.act_time }} hours</div>
           </div>
         </div>
+        <div class="manage-controls">
+          <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add Time</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck">Close Project</button>
+        </div>
       </div>
-      <div class="timer">
+    </div>
+    <div class="col-md-4 timer">
+      <h1>Time Your Work Session</h1>
+      <div class="content">
         <div class="timer-display">
-          <h1>Time Your Work Session</h1>
           <timer autostart="false" interval="1000">
               <div class="clock" ng-model="sessionElapsed">{{hhours}}:{{mminutes}}:{{sseconds}}</div>
           </timer>
@@ -28,21 +35,12 @@
           <button id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
           <button id="pause" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
           <button id="reset" class="btn btn-danger" ng-click="reset()"><i class="fa fa-stop"></i></button>
-          <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">Add Session</button>
-        </div>
-      </div>
-      <div class="project-time-options">
-        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add Time to Project</button>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck">Close Project</button>
-        <div>
-          Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
-        </div>
-        <div>
-          Elapsed ms During this Session: {{ getElapsedMs()}}
+          <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">Add to Time Spent</button>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="analytics col-md-4">
+      <h1>Project Analytics</h1>     
        <div class="col-sm-6 dataBox bar graph">
           <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL
           TIME</strong></p>
@@ -50,15 +48,14 @@
           <canvas auto-legend="" chart-data="barData" chart-options=
           "barOptions" class="bar" tc-chartjs-bar=""></canvas>
         </div><!-- Donut Graph of Skills -->
-
-        <div class="col-md-5 dataBox graph">
+        <div class="col-sm-6 dataBox graph">
           <p><strong>SKILLS BREAKDOWN</strong></p>
           <hr>
           <canvas auto-legend="" chart-data="donutData" chart-options="options"
           class="donut" tc-chartjs-doughnut=""></canvas>
         </div>
     </div>
-  </div>
+  </div><!-- row -->
 </main>
 
 <!-- Modal: pop up window for adding time manually -->

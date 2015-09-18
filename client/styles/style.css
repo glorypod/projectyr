@@ -71,25 +71,19 @@ blockquote {
 main {
   margin-top: 4%;
 }
+.manage-controls {
+  margin-top: 10%;
+}
 .timer-meta {
   text-align: center;
-  margin-bottom: 10%;
+  margin-bottom: 1%;
 }
-.timer-meta .full {
-  width: 100%;
+.timer-meta .meta-block {
+  margin-bottom: 4%;
 }
-.timer-meta .full.bottom{
-  margin-top: 5%;
-}
-.timer-meta h1{
-  color: #5cb85c;
-  font-size: 1.75em;
-  /*border-bottom: 1px solid #FF9933;*/
-  margin: 0 auto 1% auto;
-  width: 40%;
-}
+
 .timer-meta h2{
-  color: #337ab7;
+  color: #449d44;
   font-size: 1.50em;
   /*border-bottom: 1px solid #99CCFF;*/
   margin: 0 auto 1% auto;
@@ -102,7 +96,7 @@ main {
 .timer {
   text-align: center;
 }
-.timer-display h1 {
+.timer h1, .project-time-options h1, .analytics h1 {
   font-size: 1.75em;
   color: #9d9d9d;
   margin-bottom: 5%;
@@ -112,22 +106,28 @@ main {
   font-family: Digital;
   background-color: black;
   color: red;
-  width: 35%;
-  margin: 1% auto;
-  padding: 1% 2%;
+  width: 50%;
+  padding: 5%;
+  margin: 0 auto 2% auto;
 }
 .timer .btn {
   display: block;
-  width: 35%;
+  width: 50%;
+  padding: 2% 5%;
   margin: 1% auto;
 }
 .timer-display {
   width: 100%;
-}
-.project-time-options {
   margin-top: 10%;
 }
-
+ .project-time-options .btn {
+  width: 40%;
+  display: block;
+  margin: 5% auto 5% auto;
+ }
+.project-time-options .content, .timer .content {
+  margin-top: 15%;
+}
 /********** Login **********/
 .form-login {
     background-color: #EDEDED;
