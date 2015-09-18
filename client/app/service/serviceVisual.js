@@ -23,19 +23,18 @@
 
       project.createDonutData = (function() {
         var donutData = [];
-        var colors = ['#F7464A', '#3366FF', '#CCFF33', '#3399FF',
-          '#FF9933'
-        ];
-        var highlights = ['#FF5A5E', '#99B2FF', '#E6FF99', '#70B8FF',
-          '#FFC285'
-        ];
+        var colors = [['#5cb85c', '#4cae4c'], //green 
+                      ['#f0ad4e', '#eea236'], //yellow
+                      ['#d95345', '#d43f3a'], //red
+                      ['#337ab7', '#2e6da4'], //blue
+                      ['#b93b85', '#c12283']]; //purple
 
         for (var i = 0; i < skills.length; i++) {
           var data = {
             value: Math.round(project[skills[i]] / project.act_time *
               100),
-            color: colors[i],
-            highlight: highlights[i],
+            color: colors[i][0],
+            highlight: colors[i][1],
             label: skills[i]
           }
           donutData.push(data);
@@ -44,22 +43,25 @@
       })();
 
       project.createBarData = (function() {
+        var actualColor = (function() {
+          if (project.est_time >= project.act_time) {
+            actualColor = '#5cb85c'
+          } else {
+            actualColor = '#d95345'
+          }
+          return actualColor;
+        })();
+
         return barData = {
           labels: ['times'],
           datasets: [{
             label: 'estimate: ' + project.est_time + 'hrs',
-            fillColor: '#3366FF',
-            strokeColor: '#3366FF',
-            highlightFill: '#99B2FF',
-            highlightStroke: '#99B2FF',
+            fillColor: '#337ab7',
             data: [project.est_time]
           }, {
             label: 'actual: ' + Math.round(project.act_time) +
               'hrs',
-            fillColor: '#CCFF33',
-            strokeColor: '#CCFF33',
-            highlightFill: '#E6FF99',
-            highlightStroke: '#E6FF99',
+            fillColor: actualColor,
             data: [Math.round(project.act_time)]
           }]
         };
@@ -80,7 +82,7 @@
       segmentShowStroke: true,
       segmentStrokeColor: '#fff',
       segmentStrokeWidth: 2,
-      percentageInnerCutout: 70,
+      percentageInnerCutout: 50,
       animationSteps: 100,
       animationEasing: 'easeOutBounce',
       animateRotate: true,
