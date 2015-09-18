@@ -70,12 +70,19 @@
       $scope.$broadcast('timer-stop');
       $scope.running = false;
     };
+
+    $scope.reset = function(){
+      $scope.running = false;
+      totalElapsedMs = elapsedMs = 0;
+      $scope.$broadcast('timer-reset');
+    }
     $scope.addTime = function(){
       //$scope.actTime += Number(timeToAdd);
       totalElapsedMs += $scope.timeToAdd * 60 * 60 * 1000;
     };
     
     $scope.stop = function() {
+      $scope.running = false;
       startTime = undefined;
       if(totalElapsedMs > 0){
         $scope.timeToAdd = Number((totalElapsedMs / (60 * 60 * 1000)).toFixed(2));
