@@ -2,7 +2,7 @@
   angular.module('projectyr.open', ['tc.chartjs'])
     .controller('OpenController', OpenController);
 
-  function OpenController($scope, Auth, Project, Visual) {
+  function OpenController($scope, $location, Auth, Project, Visual) {
     $scope.options = Visual.options; 
     $scope.barOptions = Visual.barOptions; 
 
@@ -23,7 +23,7 @@
     $scope.setSelectedProject = function(selected) {
       $scope.project = Visual.setSelectedProject(selected);
       $scope.donutData = $scope.project.createDonutData;
-      $scope.barData = $scope.project.createBarData;
+      $scope.barData = $scope.project.createBarData;      
     }
 
   }
