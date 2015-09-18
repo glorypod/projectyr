@@ -27,6 +27,7 @@
         var highlights = ['#FF5A5E', '#99B2FF', '#E6FF99', '#70B8FF', '#FFC285'];
 
         for (var i = 0; i < skills.length; i++) {
+          console.log('skill hours', skills[i], Math.round(project[skills[i]]));
           var data = {
             value: Math.round(project[skills[i]] / project.act_time * 100),
             color: colors[i],
@@ -61,6 +62,7 @@
 
       return project;
     }
+
 
     var setSelectedProject = function(selected) {
       project = makeProject(selected);
