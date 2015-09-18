@@ -39,13 +39,78 @@
       </div>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a ng-if="!authed" href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a ng-if="!authed" href="#/signin"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+          <li><a ng-if="!authed" data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a ng-if="!authed" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
           <li><a ng-if="authed" href="#/signout"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
+<div id="login" class="modal fade" role="dialog" ng-controller="IndexController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign In</h4>
+      </div>
+      <div class="modal-body">
+         <form name="signForm">
+          <!-- username input-->
+          <input name="username" type="text"  class="form-control input-sm chat-input" placeholder="username" ng-model="user.username" required/>
+          <p ng-show="signForm.username.$error.required && signForm.username.$dirty" class="help-block">Username is required.</p>
+          </br>
+
+          <!-- password input -->
+          <input name="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="user.password" required/>
+          <p ng-show="signForm.password.$error.required && signForm.password.$dirty" class="help-block">Password is required.</p>
+          </br>
+
+          <!-- signin button and signup option -->
+          <div class="wrapper">
+            <span class="group-btn">     
+              <button class="btn btn-primary btn-block" ng-click="signin()" ng-disabled="signForm.$invalid">Signin <i class="fa fa-sign-in"></i></button>
+            </span>
+              <p class="alert alert-danger" ng-if="user.err">{{ user.err }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="signup" class="modal fade" role="dialog" ng-controller="IndexController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form name="signForm">
+          <!-- username input-->
+          <input name="username" type="text"  class="form-control input-sm chat-input" placeholder="username" ng-model="user.username" required/>
+          <p ng-show="signForm.username.$error.required && signForm.username.$dirty" class="help-block">Username is required.</p>
+          </br>
+
+          <!-- password input -->
+          <input name="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="user.password" required/>
+          <p ng-show="signForm.password.$error.required && signForm.password.$dirty" class="help-block">Password is required.</p>
+          </br>
+
+          <!-- submmit button and signin option -->
+          <div class="wrapper">
+            <span class="group-btn">     
+              <button class="btn btn-primary btn-block" ng-click="signup()" ng-disabled="signForm.$invalid" data-dismiss="modal">Signup <i class="fa fa-sign-in"></i></button>
+            </span>
+           <p class="alert alert-danger" ng-if="user.err">{{ user.err }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- End Navbar -->
   <div ui-view>
     
