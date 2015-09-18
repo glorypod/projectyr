@@ -1,4 +1,4 @@
-<main>
+<main ng-if="hasProjects">
   <div class="row">
     <div class="col-md-4 project-time-options">
       <h1>Project Overview</h1>
@@ -66,6 +66,12 @@
 
 
   <!-- row -->
+</main>
+<main ng-if='!hasProjects'>
+  <div id='fallbackMessage'>
+    <h2>Oh no!</h2>
+    <p>It looks like you haven't created any projects yet. Make sure to <a href='/#/create'>create a project</a> to start tracking your time!</p>
+  </div>
 </main>
 
 <!-- Modal: pop up window for adding time manually -->
