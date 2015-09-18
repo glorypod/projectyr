@@ -76,6 +76,14 @@ var Projects = module.exports = {
       });
   },
 
+  reopenProject: function(project){
+    return db('projects').where('projects_id', project.projects_id)
+      .update({done: null, completion_time: ''})
+      .then(function(){
+        console.log(project.project_name + " reopen complete")
+      });
+  },
+
   duplicateProject: function(userId, project) {
     return db.select()
       .from('projects')

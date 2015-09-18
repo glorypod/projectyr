@@ -20,13 +20,13 @@
           console.log($scope.project);
           $scope.setSelectedProject($scope.project);          
         })
-    }
+    };
 
     $scope.setSelectedProject = function(selected) {
       $scope.project = Visual.setSelectedProject(selected);
       $scope.donutData = $scope.project.createDonutData;
       $scope.barData = $scope.project.createBarData;
-    }
+    };
 
     $scope.makeLineGraph = function() {
       var allLabels = [];
@@ -63,9 +63,12 @@
       $scope.lineData;
     };
 
+   $scope.reopenProject = function (selected){
+      Project.reopenProject(selected)
+        .then(function(data){
+          $scope.init();
+        })
+   }; 
   }
 })();
-
-
-
 
