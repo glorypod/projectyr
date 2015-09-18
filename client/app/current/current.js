@@ -6,10 +6,13 @@
     /* set up page */
     $rootScope.initIndex();
     
+    $scope.hasProjects = false;
+
     $rootScope.init = function ()  {
       Project.getOpen()
         .then(function(all) {
           $scope.projects = all.projects;
+          if ($scope.projects.length > 0) {$scope.hasProjects = true;}
           $scope.running = false;
           $scope.timeToAdd = 0;
           $scope.currentProject = $rootScope.project || $scope.projects[$scope.projects.length-1];
@@ -119,7 +122,7 @@
           $rootScope.initIndex();
           $window.location.reload();
         })  
-    }   
+    } 
   
   }
 

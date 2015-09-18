@@ -5,6 +5,7 @@
   function OpenController($scope, $rootScope, $location, Auth, Project, Visual) {
     $scope.options = Visual.options; 
     $scope.barOptions = Visual.barOptions; 
+    $scope.hasProjects = false;
 
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) $location.path('/open');
@@ -15,6 +16,7 @@
       Project.getOpen()
         .then(function(data) {
           $scope.projects = data.projects;
+          if ($scope.projects.length > 0) {$scope.hasProjects = true;}
           $scope.project = Visual.makeProject($scope.projects[0]);
           console.log($scope.project, 'the project');
           $scope.setSelectedProject($scope.project);

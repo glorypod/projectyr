@@ -23,7 +23,7 @@
   <hr>
   <!-- Table of Projects (left) -->
 
-  <div class="row">
+  <div class="row" ng-if="hasProjects">
     <div class="col-md-5">
       <table class="table table-hover">
         <thead>
@@ -121,6 +121,12 @@
       <div class="panel-heading text-center">DIFFERENCE</div>
       <div class="panel-body text-center"><h4>{{ project.est_time - project.act_time | number:0 }}<small> HOURS</small></h4></div>
     </div>
+
+    <div id='fallbackMessage' ng-if="!hasProjects">
+      <h2>Oh no!</h2>
+      <p>It looks like you don't have any open projects. Make sure to <a href='/#/create'>create a project</a> to start tracking your time!</p>
+    </div>
+
   </div>
 </div>  
 
