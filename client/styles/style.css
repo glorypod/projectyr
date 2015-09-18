@@ -68,6 +68,10 @@ blockquote {
   text-align: center;
 }
 
+.tyr-form {
+  height: 40%;
+}
+
 /********** Current **********/
 
 main {

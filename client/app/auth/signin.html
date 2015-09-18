@@ -1,32 +1,37 @@
 <!-- Main signin form -->
 <div class="container signform">
-  <div class="row">
-    <div class="col-md-offset-5 col-md-5">
-      <div class="form-login">
-        <h3>Welcome back!</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img">
+          <img src="http://images.sodahead.com/profiles/0/0/2/0/1/0/6/6/1/Tyr-the-god-45002285715.jpeg" alt="God Tyr slaying wolf">
+        </div>
+      </div>
+      <div class="col-md-6 tyr-form">
+        <div class="form-login">
+          <h3>Welcome back!</h3>
+          <form name="signForm">
+            <!-- username input-->
+            <input name="username" type="text"  class="form-control input-sm chat-input" placeholder="username" ng-model="user.username" required/>
+            <p ng-show="signForm.username.$error.required && signForm.username.$dirty" class="help-block">Username is required.</p>
+            </br>
 
-        <form name="signForm">
-          <!-- username input-->
-          <input name="username" type="text"  class="form-control input-sm chat-input" placeholder="username" ng-model="user.username" required/>
-          <p ng-show="signForm.username.$error.required && signForm.username.$dirty" class="help-block">Username is required.</p>
-          </br>
+            <!-- password input -->
+            <input name="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="user.password" required/>
+            <p ng-show="signForm.password.$error.required && signForm.password.$dirty" class="help-block">Password is required.</p>
+            </br>
 
-          <!-- password input -->
-          <input name="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="user.password" required/>
-          <p ng-show="signForm.password.$error.required && signForm.password.$dirty" class="help-block">Password is required.</p>
-          </br>
-
-          <!-- signin button and signup option -->
-          <div class="wrapper">
-            <span class="group-btn">     
-              <button class="btn btn-primary btn-block" ng-click="signin()" ng-disabled="signForm.$invalid">Signin <i class="fa fa-sign-in"></i></button>
-            </span>
-            <br>
-            <a href="#/signup">Don't have an account? <strong>Signup</strong>...</a> 
-            <br>
-            <p class="alert alert-danger" ng-if="user.err">{{ user.err }}</p>
-          </div>
-        </form>
+            <!-- signin button and signup option -->
+            <div class="wrapper">
+              <span class="group-btn">     
+                <button class="btn btn-primary btn-block" ng-click="signin()" ng-disabled="signForm.$invalid">Signin <i class="fa fa-sign-in"></i></button>
+              </span>
+              <br>
+              <a href="#/signup">Don't have an account? <strong>Signup</strong>...</a> 
+              <br>
+              <p class="alert alert-danger" ng-if="user.err">{{ user.err }}</p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
