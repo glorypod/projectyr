@@ -1,22 +1,30 @@
 <main>
+  <div class="row timer-meta">
+    <div class="col-md-3">
+      <h2>Time Estimate</h2>
+      <div>{{ currentProject.est_time }} hours</div>
+    </div>
+    <div class="col-md-3">
+      <h1>Project Name</h1>
+      <div>{{ currentProject.project_name }}</div>
+    </div>
+    <div class="col-md-3">
+      <h2>Time Spent</h2>
+      <div>{{ currentProject.act_time }} hours</div>
+    </div>
+  </div>
   <div class="row">
-    <div ng-show="currentProject" class="col-md-6 container">
-      <div class="timer-meta">
-        <div class="full">
-          <h1>Project Name</h1>
-          <div>{{ currentProject.project_name }}</div>
-        </div>
-        <div class="full bottom">
-          <div class="half">
-            <h2>Time Estimate</h2>
-            <div>{{ currentProject.est_time }} hours</div>
-          </div>
-          <div class="half">
-            <h2>Time Spent</h2>
-            <div>{{ currentProject.act_time }} hours</div>
-          </div>
-        </div>
+    <div class="project-time-options">
+      <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add Time to Project</button>
+      <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">Add Session to Project</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck">Close Project</button>
+      <div>
+        Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
       </div>
+      <div>
+        Elapsed ms During this Session: {{ getElapsedMs()}}
+      </div>
+    </div>
       <div class="timer">
         <div class="timer-display">
           <h1>Time Your Work Session</h1>
@@ -28,17 +36,6 @@
           <button id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
           <button id="pause" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
           <button id="reset" class="btn btn-danger" ng-click="reset()"><i class="fa fa-stop"></i></button>
-        </div>
-      </div>
-      <div class="project-time-options">
-        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add Time to Project</button>
-        <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">Add Session to Project</button>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck">Close Project</button>
-        <div>
-          Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
-        </div>
-        <div>
-          Elapsed ms During this Session: {{ getElapsedMs()}}
         </div>
       </div>
     </div>
@@ -58,7 +55,7 @@
           class="donut" tc-chartjs-doughnut=""></canvas>
         </div>
     </div>
-  </div>
+  </div><!-- row -->
 </main>
 
 <!-- Modal: pop up window for adding time manually -->
