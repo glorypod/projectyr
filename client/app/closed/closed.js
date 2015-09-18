@@ -63,13 +63,17 @@
       $scope.lineData;
     };
 
-   $scope.reopenProject = function (selected){
-      Project.reopenProject(selected)
+   $scope.openProject = function (project){
+      Project.reopenProject($scope.toOpen)
         .then(function(data){
           $scope.init();
           $rootScope.initIndex();
         })
    }; 
+
+    $scope.reopenProject = function(project){
+      $scope.toOpen = project
+    }    
   }
 })();
 

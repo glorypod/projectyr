@@ -35,7 +35,7 @@
             <td><a ng-click="setSelectedProject(project)">{{ project.project_name }}</a></td>
 
             <td>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck" ng-click="closeProject(project)">Close</button>
+              <button class="btn closeButton" data-toggle="modal" data-target="#submitCheck" ng-click="closeProject(project)">close</button>
             </td>
           </tr>
         </tbody>
@@ -47,7 +47,7 @@
           
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Submit Check</h4>
+            <h4 class="modal-title">Close Project</h4>
           </div>
           
           <div class="modal-body">
@@ -56,7 +56,7 @@
           
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="completeProject(toClose)">Yes</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           </div>
           </div>
         </div>
