@@ -23,17 +23,20 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div ng-show="currentProject">
-        <div>
-          Project Name: {{ currentProject.project_name }}
+       <div class="col-sm-6 dataBox bar graph">
+          <p><strong>ESTIMATED TIME</strong> vs <strong>ACTUAL
+          TIME</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="barData" chart-options=
+          "barOptions" class="bar" tc-chartjs-bar=""></canvas>
+        </div><!-- Donut Graph of Skills -->
+
+        <div class="col-md-5 dataBox graph">
+          <p><strong>SKILLS BREAKDOWN</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="donutData" chart-options="options"
+          class="donut" tc-chartjs-doughnut=""></canvas>
         </div>
-        <div>
-          Time Estimate: {{ currentProject.est_time }} hours
-        </div>
-        <div>
-          Current Time: {{ currentProject.act_time }} hours
-        </div>
-      </div>
     </div>
   </div>
 </main>

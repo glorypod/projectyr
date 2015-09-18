@@ -2,7 +2,7 @@
   angular.module('projectyr.current', [])
   .controller('CurrentController', CurrentController);
 
-  function CurrentController ($scope, $rootScope, $interval, Project, Auth, $location) {
+  function CurrentController ($scope, $rootScope, $interval, Project, Auth, Visual, $location) {
     /* set up page */
     $rootScope.initIndex();
     
@@ -15,6 +15,11 @@
           $scope.currentProject = $rootScope.project || $scope.projects[$scope.projects.length-1];
           $scope.running = false;
           $scope.started = false;
+          $scope.options = Visual.options; 
+          $scope.barOptions = Visual.barOptions; 
+          $scope.project = Visual.setSelectedProject($scope.currentProject);
+          $scope.donutData = $scope.project.createDonutData;
+          $scope.barData = $scope.project.createBarData;   
         });
     }
 
@@ -103,8 +108,8 @@
         .then(function(data){
           $rootScope.init();
         })  
-    }
+    }   
   
-  };
+  }
 
 })();
