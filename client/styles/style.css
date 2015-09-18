@@ -103,12 +103,12 @@ main {
   margin-bottom: 5%;
 }
 .timer .clock {
-  font-size: 2em;
+  font-size: 5em;
   font-family: Digital;
   background-color: black;
   color: red;
-  width: 50%;
-  padding: 5%;
+  width: 80%;
+  padding: 10%;
   margin: 0 auto 2% auto;
 }
 .timer .btn {
@@ -127,11 +127,14 @@ main {
   margin: 5% auto 5% auto;
  }
 .project-time-options .content, .timer .content {
-  margin-top: 15%;
+  margin-bottom: 5%;
 }
 .analytics .dataBox {
   margin: 0 auto;
   width: 80%;
+}
+h1.second {
+  margin-top: 10%;
 }
 /********** Login **********/
 .form-login {
