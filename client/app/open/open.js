@@ -26,6 +26,16 @@
       $scope.donutData = $scope.project.createDonutData;
       $scope.barData = $scope.project.createBarData;      
     }
+    
+    $scope.completeProject = function(project){
+      Project.completeProject($scope.toClose)
+        .then(function(data){
+          $scope.init();
+        })  
+    }
 
+    $scope.closeProject = function(project){
+      $scope.toClose = project
+    }   
   }
 })();
