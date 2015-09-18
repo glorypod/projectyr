@@ -1,15 +1,19 @@
 <div class="container" ng-controller="ClosedController" data-ng-init="init()">
-    <h1>Closed Projects</h1>
-
+    <h4>PROJECT STATS</h4>
+      <ul class="nav nav-tabs">
+        <li><a href="#/open">Open Projects</a></li>
+        <li class="active"><a href="#/closed">Closed Projects</a></li>
+    </ul>
+  <h2>Closed Projects</h2>
     <hr>
     
      <!-- Table of Projects (left) -->
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Date Created</th>
+                        <th>Date Completed</th>
                         <th>Project Title</th>
                         <th></th>
                     </tr>
@@ -26,8 +30,10 @@
         </div>
 
         <!-- Dashboard Visuals (right) -->
-        <div class="col-md-8">
+        <div class="col-md-7">
+            <!-- <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> -->
             <h2>{{ project.project_name }}</h2>
+            <h3><small>Here's your dashboard for {{ project.project_name }}</small></h3>
             
             <div class="row">
             <!-- Time Estimation Bar Graph -->
@@ -46,16 +52,19 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 dataBox">
+                    <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>ESTIMATED:</p>
                     <hr>
                     <h2>{{ project.est_time | number:0 }} hrs</h2>
                 </div>                         
                 <div class="col-sm-3 dataBox">
+                    <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>ACTUAL:</p>
                     <hr>
                     <h2>{{ project.act_time | number:0 }} hrs</h2>
                 </div>                             
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>DIFFERENCE:</p>
                     <hr>
                     <h2>{{ project.est_time - project.act_time | number:0 }} hrs</h2>
@@ -65,16 +74,19 @@
              <!-- start of additional  -->
             <div class="row">
                 <div class="col-sm-3 dataBox">
+                    <!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> -->
                     <p>Start Date:</p>
                     <hr>
                     <h2>{{ project.creation_time.split(",")[0] }}</h2>
                 </div>                         
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
                     <p>STATUS:</p>
                     <hr>
-                    <h2>Completed</h2>
+                    <h2>Complete!</h2>
                 </div>                             
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> -->
                     <p>skills you're tracking:</p>
                     <hr>
                     <h6 ng-repeat="skill in project.skills"><strong>{{ skill }}</strong></h6>
@@ -83,16 +95,19 @@
 
             <div class="row">
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>Finish Date:</p>
                     <hr>
                     <h2>{{ project.completion_time.split(",")[0] }}</h2>
                 </div>                         
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>empty:</p>
                     <hr>
                     <h2>empty</h2>
                 </div>                             
                 <div class="col-sm-3 dataBox">
+                  <!-- <span class="glyphicon glyphicon-time" aria-hidden="true"></span> -->
                     <p>empty</p>
                     <hr>
                     <p>empty</p>
