@@ -13,6 +13,7 @@
           $scope.running = false;
           $scope.timeToAdd = 0;
           $scope.currentProject = $rootScope.project || $scope.projects[$scope.projects.length-1];
+          $rootScope.project = null;
           $scope.running = false;
           $scope.started = false;
           $scope.options = Visual.options; 
