@@ -32,11 +32,7 @@
           <tr ng-repeat="project in projects">
             <td>{{ project.creation_time.split(",")[0] }}</td>
 
-            <td>{{ project.project_name }}</td>
-
-            <td>
-              <a ng-click="setSelectedProject(project)">get details</a>
-            </td>
+            <td><a ng-click="setSelectedProject(project)">{{ project.project_name }}</a></td>
             <td>
               <button class="btn btn-success" ng-click="reopenProject(project)">Reopen</button>
             </td>
