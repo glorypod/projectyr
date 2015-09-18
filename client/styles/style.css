@@ -43,12 +43,14 @@ blockquote {
    width: 400px;
    margin-bottom: 5%;
 }
-
+.about-tyr-poem h1{
+  font-size: 10em;
+}
 .main {
   margin-top: 2%;
 }
 .about-tyr-poem {
-  padding-top: 15%;
+  padding-top: 5%;
   text-align: center;
   font-family: Norse;
   font-weight: bold;
