@@ -1,19 +1,39 @@
 <main>
   <div class="row">
-    <div ng-show="currentProject" class="col-md-6 container timer">
-      <div class="timer-display">
-        <timer autostart="false" interval="1000">
-            <div class="clock" ng-model="sessionElapsed">{{hhours}}:{{mminutes}}:{{sseconds}}</div>
-        </timer>
+    <div ng-show="currentProject" class="col-md-6 container">
+      <div class="timer-meta">
+        <div class="full">
+          <h1>Project Name</h1>
+          <div>{{ currentProject.project_name }}</div>
+        </div>
+        <div class="full bottom">
+          <div class="half">
+            <h2>Time Estimate</h2>
+            <div>{{ currentProject.est_time }} hours</div>
+          </div>
+          <div class="half">
+            <h2>Time Spent</h2>
+            <div>{{ currentProject.act_time }} hours</div>
+          </div>
+        </div>
       </div>
-      <div class="timer-controls">
-        <button ng-if="!running" id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
-        <button ng-if="running" id="stop" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
-        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add</button>
-        <button id="stop" class="btn btn-danger" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs() && !running">End</button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#submitCheck">Complete</button>
+      <div class="timer">
+        <div class="timer-display">
+          <h1>Time Your Work Session</h1>
+          <timer autostart="false" interval="1000">
+              <div class="clock" ng-model="sessionElapsed">{{hhours}}:{{mminutes}}:{{sseconds}}</div>
+          </timer>
+        </div>
+        <div class="timer-controls">
+          <button id="start" class="btn btn-success" ng-click="start()"><i class="fa fa-play"></i></button>
+          <button id="pause" class="btn btn-warning" ng-click="pause()"><i class="fa fa-pause"></i></button>
+          <button id="reset" class="btn btn-danger" ng-click="reset()"><i class="fa fa-stop"></i></button>
+        </div>
       </div>
-      <div>
+      <div class="project-time-options">
+        <button id="assign" class="btn btn-primary" data-toggle="modal" data-target="#manualTime">Add Time to Project</button>
+        <button id="stop" class="btn btn-primary" data-toggle="modal" data-target="#assignTime" ng-click="stop()" ng-if="getElapsedMs()">Add Session to Project</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#submitCheck">Close Project</button>
         <div>
           Elapsed ms Before this Session: {{ currentProject.act_time * 60 * 60 * 1000 }}
         </div>
@@ -129,7 +149,6 @@
           </tbody>
         </table>
       </div>
-
       <!-- time Assign submmit -->
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="timeAssign()">Submit</button>
@@ -137,8 +156,6 @@
     </div>
   </div>
 </div>
-
-
 <div id="submitCheck" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -149,7 +166,6 @@
       <div class="modal-body">
           Are you sure "{{ currentProject.project_name }}" is complete?
       </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="completeProject(currentProject)">Yes</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
