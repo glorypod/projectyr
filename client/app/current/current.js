@@ -114,6 +114,8 @@
       Project.completeProject(project)
         .then(function(data){
           $rootScope.init();
+          $rootScope.initIndex();
+          $window.location.reload();
         })  
     }   
   
