@@ -47,8 +47,18 @@
 
       <h2>{{ project.project_name }}</h2>
 
-      <h3><small>Here's your dashboard for {{ project.project_name }}</small></h3>
- <!--      <h6>Overview: You started {{ project.project_name }} on {{ project.creation_time.split(",")[0] }} at {{ project.creation_time.split(",")[1] }}</h6> -->
+      <h3><small>Here's your dashboard for "{{ project.project_name }}
+      "</small></h3>
+
+      <div class="row">
+        <div class="col-sm-12 dataBox graph lineGraph">
+          <p><strong>Overall Time Estimates vs. Actual</strong></p>
+          <hr>
+          <canvas auto-legend="" chart-data="lineData" chart-options=
+          "lineOptions" style="width: 100%; height: 100%;" tc-chartjs-line=
+          ""></canvas>
+        </div>
+      </div>
 
       <div class="row">
         <!-- Time Estimation Bar Graph -->
@@ -102,10 +112,10 @@
         <div class="col-sm-5 dataBox">
           <!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> -->
 
-          <p>Start Date:</p>
+          <p>Date Completed:</p>
           <hr>
 
-          <h2>{{ project.creation_time.split(",")[0] }}</h2>
+          <h2>{{ project.completion_time.split(",")[0] }}</h2>
         </div>
 
         <div class="col-sm-5 dataBox">
@@ -115,9 +125,7 @@
           <hr>
 
           <h2>Complete!</h2>
-        </div>
-
-<!--       <div class="col-sm-3 dataBox">
+        </div><!--       <div class="col-sm-3 dataBox">
         <p>skills you're tracking:</p>
         <hr>
 
@@ -133,9 +141,9 @@
           <hr>
 
           <h2><strong>{{ project[skill] | number:0 }}</strong></h2>
+
           <h6>HOURS</h6>
         </div>
-      </div>
       </div>
     </div>
   </div>
